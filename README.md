@@ -1,7 +1,7 @@
 
 # Pavan Rao
 
-### Student. Biker. Philosopher.
+> Student. Biker. Philosopher.
 
 ###### pavanpej.github.io
 
