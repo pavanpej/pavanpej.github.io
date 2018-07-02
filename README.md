@@ -5,4 +5,4 @@
 
 ###### pavanpej.github.io
 
-This is my first website. More coming up.
+More coming up.
