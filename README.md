@@ -3,6 +3,4 @@
 
 > Student. Biker. Philosopher.
 
-###### pavanpej.github.io
-
-More coming up.
+Hosted at [pavanpej.me](https://pavanpej.me)
