@@ -18,10 +18,9 @@ const Header = ({ siteTitle }) => {
 
   return (
     <header>
-      {/* brand  */}
-      <div class="mb-6" id="brand">
+      <div className="mb-6" id="brand">
         <h1
-          class="font-brand text-minion-yellow text-6xl"
+          className="font-brand text-minion-yellow text-6xl"
           aria-label="website brand"
         >
           <Link to="/">{site.siteMetadata?.brand}</Link>
@@ -38,9 +37,8 @@ const Header = ({ siteTitle }) => {
       */}
       </nav>
 
-      {/* separator  */}
-      <div class="my-12">
-        <span class="text-minion-yellow text-3xl">. . .</span>
+      <div className="my-12" id="separator">
+        <span className="text-minion-yellow text-3xl">. . .</span>
       </div>
     </header>
   )
