@@ -9,7 +9,10 @@ module.exports = {
     image: `content/assets/favicon-grey.png`,
     social: {
       twitter: `@pavanpej`,
-      linkedin: `https://linkedin.com/in/pavanpej`
+      linkedin: `https://linkedin.com/in/pavanpej`,
+      github: `pavanpej`,
+      medium: `@pavanpej`,
+      mail: `pavanpej@gmail.com`,
     }
   },
   plugins: [
@@ -38,6 +41,14 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-mailgo`, // https://mailgo.dev
+      options: {
+        mailgoConfig: {
+          dark: true,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
