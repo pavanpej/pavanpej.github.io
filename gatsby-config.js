@@ -2,8 +2,7 @@ module.exports = {
   siteMetadata: {
     brand: `pr.`,
     title: `Pavan Rao`,
-    description: `The personal website of Pavan Rao 
-      (built with React and Gatsby.`,
+    description: `The personal website of Pavan Rao.`,
     author: `Pavan Rao (@pavanpej)`,
     siteUrl: `https://pavanpej.github.io/`,
     image: `content/assets/favicon-grey.png`,
