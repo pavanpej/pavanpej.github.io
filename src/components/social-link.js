@@ -3,16 +3,25 @@ import React from "react"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-const SocialLink = ({ children, href, faIcon, className }) => {
+const SocialLink = ({
+  children,
+  href,
+  faIcon,
+  className,
+  size,
+  isDownloadable,
+}) => {
+  const commonStyles = "hover:text-minion-yellow transition-all "
   return (
     <a
       href={href || ``}
       target="_blank"
       rel="noopener noreferrer"
-      className={className || "hover:text-minion-yellow transition-all"}
+      className={commonStyles + className}
+      download={isDownloadable}
     >
-      {faIcon && <FontAwesomeIcon icon={faIcon} size="lg" />}
-      {children}
+      {children}&nbsp;
+      {faIcon && <FontAwesomeIcon icon={faIcon} size={size || "lg"} />}
     </a>
   )
 }
@@ -22,6 +31,8 @@ SocialLink.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   faIcon: PropTypes.instanceOf(Object),
+  size: PropTypes.string,
+  isDownloadable: PropTypes.bool,
 }
 
 SocialLink.defaultProps = {

@@ -6,11 +6,15 @@ import Layout from "../components/layout"
 import Subheading from "../components/subheading"
 import SocialLink from "../components/social-link"
 
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
+import {
+  // faPaperPlane, // this was not very clear that it's for email
+  faExternalLinkAlt,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons"
 import {
   faGithub,
   faLinkedin,
-  faMediumM,
+  // faMediumM,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons"
 
@@ -23,7 +27,6 @@ const IndexPage = () => {
             twitter
             linkedin
             github
-            medium
             mail
           }
         }
@@ -31,7 +34,7 @@ const IndexPage = () => {
     }
   `)
 
-  const { twitter, linkedin, github, medium, mail } = site.siteMetadata?.social
+  const { twitter, linkedin, github, mail } = site.siteMetadata?.social
 
   return (
     <Layout>
@@ -82,16 +85,16 @@ const IndexPage = () => {
           You can reach out to me at <br />
           <SocialLink
             href={`mailto:${mail}`}
-            className="text-vivid-blue hover:text-minion-yellow transition-all"
+            className="text-vivid-blue"
           >
             {mail}
           </SocialLink>{" "}
           or find me on <br />
           GitHub, Twitter, or LinkedIn
         </p>
-        <div className="flex space-x-4 mt-12" aria-label="social links">
+        <div className="flex space-x-4 mt-8" aria-label="social links">
           <span aria-label="email">
-            <SocialLink href={`mailto:${mail}`} faIcon={faPaperPlane} />
+            <SocialLink href={`mailto:${mail}`} faIcon={faEnvelope} />
           </span>
           <span aria-label="GitHub">
             <SocialLink
@@ -108,13 +111,32 @@ const IndexPage = () => {
           <span aria-label="LinkedIn">
             <SocialLink href={linkedin} faIcon={faLinkedin} />
           </span>
+          {/* removing Medium until I have some posts
           <span aria-label="Medium">
             <SocialLink
               href={`https://medium.com/${medium}`}
               faIcon={faMediumM}
             />
-          </span>
+          </span> */}
         </div>
+      </section>
+
+      <section className="my-12" id="resume" aria-label="resume section">
+        <h3 className="font-medium text-minion-yellow mb-2">resume</h3>
+        <p className="max-w-md">
+          My resume can be found&nbsp;
+          <span className="py-1 border-b-2 hover:text-minion-yellow hover:border-minion-yellow transition-all">
+            <SocialLink
+              href={`Pavan_Rao_SDE.pdf`}
+              faIcon={faExternalLinkAlt}
+              size="sm"
+              isDownloadable={false}
+              // if this is `true` then clicking on it will download the file
+            >
+              here
+            </SocialLink>
+          </span>
+        </p>
       </section>
     </Layout>
   )

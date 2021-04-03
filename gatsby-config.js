@@ -4,7 +4,7 @@ module.exports = {
     title: `Pavan Rao`,
     description: `The personal website of Pavan Rao.`,
     author: `Pavan Rao (@pavanpej)`,
-    siteUrl: `https://pavanpej.github.io/`,
+    siteUrl: `https://pavanpej.com/`,
     image: `content/assets/favicon-grey.png`,
     social: {
       twitter: `@pavanpej`,
