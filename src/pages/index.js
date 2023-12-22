@@ -7,7 +7,6 @@ import Subheading from "../components/subheading"
 import SocialLink from "../components/social-link"
 
 import {
-  // faPaperPlane, // this was not very clear that it's for email
   faExternalLinkAlt,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons"
@@ -15,7 +14,8 @@ import {
   faGithub,
   faLinkedin,
   // faMediumM,
-  faTwitter,
+  // faTwitter,
+  faXTwitter,
 } from "@fortawesome/free-brands-svg-icons"
 
 const IndexPage = () => {
@@ -49,20 +49,19 @@ const IndexPage = () => {
       <section className="my-12" id="whoami" aria-label="whoami section">
         <h3 className="font-medium text-minion-yellow mb-2">whoami</h3>
         <p className="max-w-md">
-          I am a full stack software developer currently working in the cloud
-          and DevOps space. I am also an avid science fiction reader and
-          enthusiast, and an occasional biker.
+          I am an MSCS student at Northeastern University's {" "}
+          <SocialLink 
+            href={"https://www.khoury.northeastern.edu/"} className="text-vivid-blue"> 
+              Khoury College of Computer Sciences
+          </SocialLink> in Boston, MA
+          and an experienced full stack software engineer interested in the distributed systems, web, cloud and DevOps space. I am also an avid science fiction reader and enthusiast, and an occasional biker.
         </p>
       </section>
 
       <section className="my-12" id="tech" aria-label="tech section">
         <h3 className="font-medium text-minion-yellow mb-2">tech</h3>
         <p className="max-w-md">
-          I currently work on Kubernetes development with Go and Docker, and
-          have worked with JavaScript (Angular, React), Python, and Java in the
-          past. My tech stack also includes experience with MySQL, MongoDB, and
-          some novice level Linux shell scripting. I am a developer that strives
-          for clean and maintainable code.
+          I have extensive experience working on Kubernetes development with Go and Docker, and have worked with JavaScript (Angular, React), Python, and Java in the past. My tech stack also includes experience with Postgres, MySQL, MongoDB, and some novice level Linux shell scripting. I am a developer that strives for clean and maintainable code.
         </p>
       </section>
 
@@ -74,8 +73,8 @@ const IndexPage = () => {
         <h3 className="font-medium text-minion-yellow mb-2">entertainment</h3>
         <p className="max-w-md">
           Apart from technology (of all sorts), I enjoy spending time reading
-          science fiction and mystery novels, or on YouTube browsing content in
-          gaming, guitar, and science.
+          science fiction and mystery novels (particular preference for spy thrillers here), or on YouTube browsing content in science, comedy,
+          gaming, and guitar.
         </p>
       </section>
 
@@ -88,7 +87,7 @@ const IndexPage = () => {
             className="text-vivid-blue"
           >
             {mail}
-          </SocialLink>{" "}
+          </SocialLink>
           or find me on <br />
           GitHub, Twitter, or LinkedIn
         </p>
@@ -105,7 +104,7 @@ const IndexPage = () => {
           <span aria-label="Twitter">
             <SocialLink
               href={`https://twitter.com/${twitter}`}
-              faIcon={faTwitter}
+              faIcon={faXTwitter}
             />
           </span>
           <span aria-label="LinkedIn">

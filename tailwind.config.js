@@ -1,8 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  media: false, // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -16,9 +16,6 @@ module.exports = {
         brand: ['Glegoo', ...defaultTheme.fontFamily.sans],
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
 }

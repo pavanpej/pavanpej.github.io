@@ -8,7 +8,7 @@ module.exports = {
     image: `content/assets/favicon-grey.png`,
     social: {
       twitter: `@pavanpej`,
-      linkedin: `https://linkedin.com/in/pavanpej`,
+      linkedin: `https://linkedin.com/in/pavanrrao`,
       github: `pavanpej`,
       medium: `@pavanpej`,
       mail: `pavanpej@gmail.com`,
