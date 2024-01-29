@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useSiteMetadata } from "../hooks/useSiteMetadata"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
@@ -19,22 +19,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 
 const IndexPage = () => {
-  const { site } = useStaticQuery(graphql`
-    query SocialQuery {
-      site {
-        siteMetadata {
-          social {
-            twitter
-            linkedin
-            github
-            mail
-          }
-        }
-      }
-    }
-  `)
-
-  const { twitter, linkedin, github, mail } = site.siteMetadata?.social
+  const { social } = useSiteMetadata()
+  const { twitter, linkedin, github, mail } = social
 
   return (
     <Layout>
@@ -49,19 +35,28 @@ const IndexPage = () => {
       <section className="my-12" id="whoami" aria-label="whoami section">
         <h3 className="font-medium text-minion-yellow mb-2">whoami</h3>
         <p className="max-w-md">
-          I am an MSCS student at Northeastern University's {" "}
-          <SocialLink 
-            href={"https://www.khoury.northeastern.edu/"} className="text-vivid-blue"> 
-              Khoury College of Computer Sciences
-          </SocialLink> in Boston, MA
-          and an experienced full stack software engineer interested in the distributed systems, web, cloud and DevOps space. I am also an avid science fiction reader and enthusiast, and an occasional biker.
+          I am an MSCS student at Northeastern University's{" "}
+          <SocialLink
+            href={"https://www.khoury.northeastern.edu/"}
+            className="text-vivid-blue"
+          >
+            Khoury College of Computer Sciences
+          </SocialLink>{" "}
+          in Boston, MA and an experienced full stack software engineer
+          interested in the distributed systems, web, cloud and DevOps space. I
+          am also an avid science fiction reader and enthusiast, and an
+          occasional biker.
         </p>
       </section>
 
       <section className="my-12" id="tech" aria-label="tech section">
         <h3 className="font-medium text-minion-yellow mb-2">tech</h3>
         <p className="max-w-md">
-          I have extensive experience working on Kubernetes development with Go and Docker, and have worked with JavaScript (Angular, React), Python, and Java in the past. My tech stack also includes experience with Postgres, MySQL, MongoDB, and some novice level Linux shell scripting. I am a developer that strives for clean and maintainable code.
+          I have extensive experience working on Kubernetes development with Go
+          and Docker, and have worked with JavaScript (Angular, React), Python,
+          and Java in the past. My tech stack also includes experience with
+          Postgres, MySQL, MongoDB, and some novice level Linux shell scripting.
+          I am a developer that strives for clean and maintainable code.
         </p>
       </section>
 
@@ -73,7 +68,8 @@ const IndexPage = () => {
         <h3 className="font-medium text-minion-yellow mb-2">entertainment</h3>
         <p className="max-w-md">
           Apart from technology (of all sorts), I enjoy spending time reading
-          science fiction and mystery novels (particular preference for spy thrillers here), or on YouTube browsing content in science, comedy,
+          science fiction and mystery novels (particular preference for spy
+          thrillers here), or on YouTube browsing content in science, comedy,
           gaming, and guitar.
         </p>
       </section>
@@ -82,10 +78,7 @@ const IndexPage = () => {
         <h3 className="font-medium text-minion-yellow mb-2">social</h3>
         <p className="max-w-xs">
           You can reach out to me at <br />
-          <SocialLink
-            href={`mailto:${mail}`}
-            className="text-vivid-blue"
-          >
+          <SocialLink href={`mailto:${mail}`} className="text-vivid-blue">
             {mail}
           </SocialLink>
           or find me on <br />
