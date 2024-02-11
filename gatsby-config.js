@@ -4,7 +4,7 @@ module.exports = {
     title: `Pavan Rao`,
     description: `The personal website of Pavan Rao.`,
     author: `Pavan Rao (@pavanpej)`,
-    siteUrl: `https://pavanpej.com/`,
+    siteUrl: `https://pavanpej.com`,
     image: `content/assets/favicon-grey.png`,
     social: {
       twitter: `@pavanpej`,
@@ -12,7 +12,7 @@ module.exports = {
       github: `pavanpej`,
       medium: `@pavanpej`,
       mail: `pavanpej@gmail.com`,
-    }
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

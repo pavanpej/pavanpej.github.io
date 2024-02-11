@@ -119,7 +119,7 @@ const IndexPage = () => {
           My resume can be found&nbsp;
           <span className="py-1 border-b-2 hover:text-minion-yellow hover:border-minion-yellow transition-all">
             <SocialLink
-              href={`Pavan-Ramachandra-Rao-Resume.pdf`}
+              href={`resume`}
               faIcon={faExternalLinkAlt}
               size="sm"
               isDownloadable={false}
