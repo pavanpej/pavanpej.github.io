@@ -3,17 +3,17 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 const Subheading = ({ children }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-          }
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
         }
       }
-    `
-  )
+    }
+  `)
+
+  // TODO: add the back button as generic over here
 
   return (
     <div className="my-12">

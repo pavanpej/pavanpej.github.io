@@ -1,5 +1,9 @@
 import React from "react"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
+import { Link } from "gatsby"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
@@ -71,6 +75,27 @@ const IndexPage = () => {
           science fiction and mystery novels (particular preference for spy
           thrillers here), or on YouTube browsing content in science, comedy,
           gaming, and guitar.
+        </p>
+      </section>
+
+      <section
+        className="my-12"
+        id="miscellaneous"
+        aria-label="miscellaneous section"
+      >
+        <h3 className="font-medium text-minion-yellow mb-2">miscellaneous</h3>
+        <p className="max-w-md">
+          Links to other content from yours truly :
+          <ul>
+            <li>
+              <Link
+                to="/experiences"
+                className="text-vivid-blue hover:text-minion-yellow transition-all"
+              >
+                Experiences <FontAwesomeIcon icon={faArrowRightLong} />
+              </Link>
+            </li>
+          </ul>
         </p>
       </section>
 

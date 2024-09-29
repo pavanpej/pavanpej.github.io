@@ -1,4 +1,8 @@
 import React from "react"
+import { Link } from "gatsby"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 
 import SEO from "../../components/seo"
 import Layout from "../../components/layout"
@@ -49,14 +53,26 @@ const RoadPage = () => {
   return (
     <Layout>
       <SEO title={`Road Trippin'`} />
-      <Subheading>Road Trippin'</Subheading>
+      <Subheading>
+        <div className="flex flex-col space-y-2">
+          <span>Road Trippin'</span>
+          <span className="text-xs">
+            <Link
+              to="/experiences"
+              className="text-vivid-blue hover:text-minion-yellow transition-all"
+            >
+              <FontAwesomeIcon icon={faArrowLeftLong} /> Back
+            </Link>
+          </span>
+        </div>
+      </Subheading>
 
       <section
         className="my-12"
         id="road-trippin-intro"
         aria-label="road tripping page introduction"
       >
-        <p className="max-w-md text-lg">
+        <p className="max-w-md text-lg text-justify">
           I started my journey of exploring various places in the USA in 2023
           (when I landed in Boston for my Master's), and in the process, have
           driven vehicles of different classes, sizes, makes, models, and price
@@ -69,20 +85,20 @@ const RoadPage = () => {
       {data.map((item, index) => {
         return (
           <section
-            className="my-12"
+            className="my-14"
             id={item.id}
             aria-label={`${item.id} section`}
             key={index}
           >
             <h3 className="font-medium mb-2">
-              <p className="text-minion-yellow mb-1">{item.title}</p>
+              <p className="text-minion-yellow mb-1 text-xl">{item.title}</p>
               <p className="text-xs font-bold text-subtext-gray tracking-wide flex space-x-1 mw-w-md">
                 <span>{item.dateDriven}</span>
                 <span>&#9679;</span>
                 <span>{item.location}</span>
               </p>
             </h3>
-            <p className="max-w-md">{item.description}</p>
+            <p className="max-w-md text-justify">{item.description}</p>
             <img
               className="mt-4 w-96"
               src={`${assetUrlPrefix}/${item.image}`}
