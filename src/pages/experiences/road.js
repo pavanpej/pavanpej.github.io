@@ -37,7 +37,7 @@ const RoadPage = () => {
       location: "Seattle, WA",
       description:
         "A pretty average full-size SUV for most people, but the fondness I have associated with this car has to do with 2 events. First, the fact that for our 4-day trip in Seattle, on a pleasant sunny Seattle afternoon, this was the upgrade that Enterprise gifted us with, after checking their inventory (for a frustrating 25 minutes) and telling us that the sedan we had booked was unavailable. The second point in favour was due to this being the car where my closest friends reunited after a (long, long) span of almost 2 years.",
-      image: "2024-08-17-ford-explorer-seattle.jpg",
+      image: "2024-08-17-explorer-seattle.jpg",
     },
     {
       id: "van",
