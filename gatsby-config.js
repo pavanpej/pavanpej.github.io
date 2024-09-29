@@ -5,7 +5,7 @@ module.exports = {
     description: `The personal website of Pavan Rao.`,
     author: `Pavan Rao (@pavanpej)`,
     siteUrl: `https://pavanpej.com`,
-    image: `content/assets/favicon-grey.png`,
+    image: `static/assets/favicon-grey.png`,
     social: {
       twitter: `@pavanpej`,
       linkedin: `https://linkedin.com/in/pavanrrao`,
@@ -26,7 +26,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/assets`,
+        path: `${__dirname}/static/assets`,
         name: `assets`,
       },
     },
@@ -57,7 +57,7 @@ module.exports = {
         background_color: `#073b3a`,
         theme_color: `#ffe347`,
         display: `minimal-ui`,
-        icon: `content/assets/favicon-grey.png`, // This path is relative to the root of the site.
+        icon: `static/assets/favicon-grey.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

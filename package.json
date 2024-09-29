@@ -2,7 +2,7 @@
   "name": "pavanpej.github.io",
   "private": true,
   "description": "The personal website of Pavan Rao",
-  "version": "v3-dec-2023",
+  "version": "v4",
   "author": "Pavan Rao",
   "dependencies": {
     "@fontsource/fira-sans": "^5.0.18",
