@@ -10,6 +10,7 @@ module.exports = {
         "rich-black": "#073b3a",
         "vivid-blue": "#44ccff",
         "copyright-gray": "#888888",
+        "subtext-gray": "#adadad",
       },
       fontFamily: {
         sans: ['"Fira Sans"', ...defaultTheme.fontFamily.sans],
