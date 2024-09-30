@@ -1,0 +1,35 @@
+name: Build and Check Gatsby Site
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Gatsby site
+        run: npm run build
+
+      - name: Check for build errors
+        run: |
+          if [ -d "public" ]; then
+            echo "Build successful"
+          else
+            echo "Build failed"
+            exit 1
+          fi
