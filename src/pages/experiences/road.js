@@ -18,7 +18,7 @@ const RoadPage = () => {
       dateDriven: "Sep 28, 2024",
       location: "Cape Cod, MA",
       description:
-        "I drove the Wagoneer on a 1-day trip to Cape Cod, MA from Boston with 8 of my closest buddies. Buttery smooth steering, and suspension like I was on the clouds. A particularly memorable memory from this one - 3 days before the trip, the rental company calls and tells us they don't have an 8-seater in their inventory (AAARGHHH!!!) and that they'd most likely be giving us 2 smaller (a.k.a. meh) cars, but on the morning of the trip, they surprise us with one of the best 8-seaters available. However, Jeep needs to work a lot more on the adaptive cruise control system (specifically the lane assist) for the price they charge. Recommended only for folks who don't mind feeling disconnected to the tarmac.",
+        "I drove the Wagoneer on a 1-day trip to Cape Cod, MA from Boston with 8 of my closest buddies. Buttery smooth steering, and suspension like I was on the clouds. A particularly memorable memory from this one - 3 days before the trip, the rental company calls and tells us they don't have an 8-seater in their inventory (AAARGHHH!!!) and that they'd most likely be giving us 2 smaller (a.k.a. meh) cars, but on the morning of the trip, they surprise us with one of the best 8-seaters available. However, Jeep needs to work a lot more on the adaptive cruise control system (specifically the lane assist) for the price they charge. Recommended only for folks who don't mind feeling disconnected from the tarmac.",
       image: "2024-09-27-wagoneer-cape-cod.jpg",
     },
     {
@@ -27,7 +27,7 @@ const RoadPage = () => {
       dateDriven: "Sep 5, 2024",
       location: "Chicago, IL",
       description:
-        "Drove the Wrangler on the 2nd day of my 4-day Chicago trip at the start of September 2024. Turning off the TCS and flooring the gas on a dead-end gravel road near one of the state parks was one of the highlights of my experiences in the US, which is why I will fondly remember this red-colored pocket-sized beast. Also had the well-timed fortunate experience of driving in the open-top configuration at 2am on a chilly 15 &deg;C night, driving through downtown Chicago with the boys. Highly recommend for off-roading, but not great for large groups or if you hate feeling like you're driving on top of a mountain.",
+        "Drove the Wrangler on the 2nd day of my 4-day Chicago trip at the start of September 2024. Turning off the TCS and flooring the gas on a dead-end gravel road near one of the state parks was one of the highlights of my experiences in the US, which is why I will fondly remember this red-colored pocket-sized beast. Also had the well-timed fortunate experience of driving in the open-top configuration at 2am on a chilly 14°C night, driving through downtown Chicago with the boys. Highly recommend for off-roading, but not great for large groups or if you hate feeling like you're driving on top of a mountain.",
       image: "2024-09-05-jeep-wrangler-rubicon-chicago.jpg",
     },
     {
