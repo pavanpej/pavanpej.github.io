@@ -20,6 +20,7 @@ const RoadPage = () => {
       description:
         "I drove the Wagoneer on a 1-day trip to Cape Cod, MA from Boston with 8 of my closest buddies. Buttery smooth steering, and suspension like I was on the clouds. A particularly memorable memory from this one - 3 days before the trip, the rental company calls and tells us they don't have an 8-seater in their inventory (AAARGHHH!!!) and that they'd most likely be giving us 2 smaller (a.k.a. meh) cars, but on the morning of the trip, they surprise us with one of the best 8-seaters available. However, Jeep needs to work a lot more on the adaptive cruise control system (specifically the lane assist) for the price they charge. Recommended only for folks who don't mind feeling disconnected from the tarmac.",
       image: "2024-09-27-wagoneer-cape-cod.jpg",
+      attribution: "Picture by Amulya Rajaguru, permission given to author for use"
     },
     {
       id: "rubicon",
@@ -104,6 +105,10 @@ const RoadPage = () => {
               src={`${assetUrlPrefix}/${item.image}`}
               alt={item.title}
             />
+            {item.attribution &&
+              <p className="text-xs mt-1 text-subtext-gray">
+                {item.attribution}
+              </p>}
           </section>
         )
       })}
