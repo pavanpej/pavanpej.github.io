@@ -13,19 +13,7 @@ import Subheading from "../../components/subheading"
 const ExperiencesPage = () => (
   <Layout>
     <SEO title="Experiences" />
-    <Subheading>
-      <div className="flex flex-col space-y-2">
-        <span>Experiences</span>
-        <span className="text-xs">
-          <Link
-            to="/"
-            className="text-vivid-blue hover:text-minion-yellow transition-all"
-          >
-            <FontAwesomeIcon icon={faArrowLeftLong} /> Back
-          </Link>
-        </span>
-      </div>
-    </Subheading>
+    <Subheading title="Experiences" />
 
     <p className="mb-2">Check out some of my experiences below</p>
 

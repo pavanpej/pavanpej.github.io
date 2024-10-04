@@ -29,7 +29,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title={`Pavan Rao`} />
-      <Subheading>
+      <Subheading isHome={true}>
         Hi, I'm Pavan Rao.{" "}
         <span role="img" aria-label="jsx-a11y/accessible-emoji">
           👋
@@ -79,24 +79,30 @@ const IndexPage = () => {
       </section>
 
       <section
-        className="my-12"
+        className="my-12 max-w-md"
         id="miscellaneous"
         aria-label="miscellaneous section"
       >
         <h3 className="font-medium text-minion-yellow mb-2">miscellaneous</h3>
-        <p className="max-w-md">
-          Links to other content from yours truly :
-          <ul>
-            <li>
-              <Link
-                to="/experiences"
-                className="text-vivid-blue hover:text-minion-yellow transition-all"
-              >
-                Experiences <FontAwesomeIcon icon={faArrowRightLong} />
-              </Link>
-            </li>
-          </ul>
-        </p>
+        <p>Other content from yours truly :</p>
+        <ul>
+          <li>
+            <Link
+              to="/experiences"
+              className="text-vivid-blue hover:text-minion-yellow transition-all"
+            >
+              Experiences <FontAwesomeIcon icon={faArrowRightLong} />
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/music"
+              className="text-vivid-blue hover:text-minion-yellow transition-all"
+            >
+              Music <FontAwesomeIcon icon={faArrowRightLong} />
+            </Link>
+          </li>
+        </ul>
       </section>
 
       <section className="my-12" id="social" aria-label="social section">

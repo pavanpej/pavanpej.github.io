@@ -8,7 +8,7 @@ import Subheading from "../components/subheading"
 const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
-    <Subheading>404: Not Found</Subheading>
+    <Subheading title="404: Not found" />
     <p>
       Sorry, that page doesn't exist. <br />
       Might as well take a look at my{" "}
