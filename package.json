@@ -6,7 +6,7 @@
   "author": "Pavan Rao",
   "dependencies": {
     "@fontsource/fira-sans": "^5.0.18",
-    "@fontsource/glegoo": "^5.0.18",
+    "@fontsource/glegoo": "^5.2.5",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
