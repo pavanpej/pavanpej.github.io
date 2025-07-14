@@ -42,7 +42,7 @@
     "analyze": "npm run build && npx vite-bundle-analyzer dist/assets"
   },
   "dependencies": {
-    "astro": "^4.0.0",
+    "astro": "^5.11.1",
     "@astrojs/react": "^3.0.0",
     "@astrojs/tailwind": "^6.0.2",
     "@fontsource/fira-sans": "^5.0.0",
