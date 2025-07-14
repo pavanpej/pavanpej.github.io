@@ -110,7 +110,8 @@ const {
     <!-- Web Vitals tracking (production only) -->
     <script>
       // Initialize web vitals tracking only in production
-      (async function () {
+      // eslint-disable-next-line no-extra-semi
+      ;(async function () {
         // Only track if window is available (client-side)
         if (typeof window === "undefined") {
           return
