@@ -1,0 +1,70 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1' # Weekly on Mondays at 6 AM UTC
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+      
+      - name: Run npm audit (strict)
+        id: audit-strict
+        run: |
+          if npm audit --audit-level=high; then
+            echo "audit-status=passed" >> $GITHUB_OUTPUT
+          else
+            echo "audit-status=failed" >> $GITHUB_OUTPUT
+            echo "High or critical vulnerabilities found!"
+            npm audit --audit-level=high
+            exit 1
+          fi
+      
+      - name: Check for security advisories
+        run: |
+          echo "Checking for security advisories in package.json..."
+          npx audit-ci --moderate
+        continue-on-error: true
+      
+      - name: Generate security report
+        if: always()
+        run: |
+          echo "## Security Audit Report" > security-report.md
+          echo "Generated on: $(date)" >> security-report.md
+          echo "" >> security-report.md
+          echo "### npm audit results:" >> security-report.md
+          npm audit --json > audit-results.json || true
+          if [ -f audit-results.json ]; then
+            echo "Audit completed. Check artifacts for detailed results."
+          fi
+      
+      - name: Upload security report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-audit-report
+          path: |
+            security-report.md
+            audit-results.json
+          retention-days: 30 

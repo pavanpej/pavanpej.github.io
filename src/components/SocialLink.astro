@@ -1,0 +1,20 @@
+---
+export interface Props {
+  href: string;
+  faIcon?: string;
+  class?: string;
+}
+
+const { href, faIcon, class: className = "" } = Astro.props;
+const commonStyles = "hover:text-minion-yellow transition-all";
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`${commonStyles} ${className}`}
+>
+  <slot />
+  {faIcon && <i class={faIcon}></i>}
+</a> 

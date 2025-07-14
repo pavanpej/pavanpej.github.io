@@ -1,0 +1,91 @@
+/* Map styles for USA travel map */
+
+.custom-marker {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.custom-marker:hover {
+  filter: brightness(1.2);
+}
+
+/* Selected marker highlighting */
+.custom-marker.selected {
+  filter: brightness(1.3) saturate(1.2);
+}
+
+/* Info Panel Styles - Fixed positioning instead of popups */
+.info-panel {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  max-width: 280px;
+  min-width: 240px;
+  background: var(--color-rich-black, #073b3a);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.info-panel-content {
+  padding: 1rem;
+  position: relative;
+}
+
+.info-panel-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  padding-right: 2.5rem; /* Add padding to prevent title from overlapping with close button */
+}
+
+.info-panel-close {
+  background: none;
+  border: none;
+  color: var(--color-minion-yellow, #ffe347);
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  line-height: 0.5;
+  transition: color 0.2s ease;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  flex-shrink: 0;
+}
+
+.info-panel-close:hover {
+  color: white;
+}
+
+.info-panel-close:focus {
+  outline: 2px solid var(--color-vivid-blue, #0bd0d0);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+
+
+/* Responsive adjustments for info panel */
+@media (max-width: 640px) {
+  .info-panel {
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    max-width: none;
+    min-width: auto;
+  }
+  
+  .info-panel-content {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-panel {
+    max-width: none;
+    min-width: auto;
+  }
+}

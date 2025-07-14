@@ -1,4 +1,4 @@
-name: Build and Check Gatsby Site
+name: Build and Check Astro Website
 
 on:
   pull_request:
@@ -12,24 +12,33 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Cache Astro build
+        uses: actions/cache@v4
+        with:
+          path: .astro
+          key: ${{ runner.os }}-astro-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-astro-
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build Gatsby site
+      - name: Build Astro site
         run: npm run build
 
       - name: Check for build errors
         run: |
-          if [ -d "public" ]; then
-            echo "Build successful"
+          if [ -d "dist" ]; then
+            echo "Build successful - Astro output found in dist/"
           else
-            echo "Build failed"
+            echo "Build failed - dist/ directory not found"
             exit 1
           fi

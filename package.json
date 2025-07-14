@@ -1,63 +1,10 @@
 {
   "name": "pavanpej.github.io",
+  "type": "module",
   "private": true,
   "description": "The personal website of Pavan Rao",
-  "version": "v4",
+  "version": "v2025-jul-04",
   "author": "Pavan Rao",
-  "dependencies": {
-    "@fontsource/fira-sans": "^5.0.18",
-    "@fontsource/glegoo": "^5.0.18",
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-brands-svg-icons": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "autoprefixer": "^10.4.16",
-    "gatsby": "^5.13.0",
-    "gatsby-image": "^3.11.0",
-    "gatsby-plugin-mailgo": "^0.12.2",
-    "gatsby-plugin-manifest": "^5.13.1",
-    "gatsby-plugin-offline": "^6.13.0",
-    "gatsby-plugin-postcss": "^6.13.0",
-    "gatsby-plugin-react-helmet": "^6.13.1",
-    "gatsby-plugin-sharp": "^5.13.0",
-    "gatsby-source-filesystem": "^5.13.0",
-    "gatsby-transformer-sharp": "^5.13.0",
-    "postcss": "^8.1.14",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
-    "tailwindcss": "^3.4.13"
-  },
-  "devDependencies": {
-    "gh-pages": "^6.1.1",
-    "prettier": "^3.1.1",
-    "stylelint-config-recommended": "^14.0.0"
-  },
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "deploy": "gatsby build && gh-pages -d public -b master",
-    "gh-pages": "gh-pages -d public -b master",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "keywords": [
-    "html5",
-    "css",
-    "js",
-    "gatsby",
-    "react",
-    "web",
-    "web",
-    "development",
-    "docker",
-    "kubernetes",
-    "cloud"
-  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -66,5 +13,73 @@
   "bugs": {
     "url": "https://github.com/pavanpej/pavanpej.github.io/issues"
   },
-  "homepage": "https://github.com/pavanpej/pavanpej.github.io#readme"
+  "homepage": "https://github.com/pavanpej/pavanpej.github.io#readme",
+  "keywords": [
+    "html5",
+    "css",
+    "js",
+    "astro",
+    "react",
+    "web",
+    "development",
+    "docker",
+    "kubernetes",
+    "cloud"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "analyze": "npm run build && npx vite-bundle-analyzer dist/assets",
+    "build": "astro build",
+    "build:analyze": "ANALYZE=true astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,astro}\"",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix",
+    "clean": "rm -rf dist .astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.0.0",
+    "@fontsource/fira-sans": "^5.0.0",
+    "@fontsource/glegoo": "^5.0.0",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "astro": "^4.0.0",
+    "leaflet": "^1.9.4",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
+    "web-vitals": "^3.5.2"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/vite": "^4.1.11",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "astro-eslint-parser": "^1.2.2",
+    "eslint": "^8.57.0",
+    "eslint-plugin-astro": "^0.34.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.1.1",
+    "stylelint-config-recommended": "^14.0.0",
+    "tailwindcss": "^3.3.0",
+    "terser": "^5.43.1",
+    "vite-bundle-analyzer": "^0.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
 }

@@ -1,0 +1,31 @@
+/* Import custom color properties */
+@import './colors.css';
+@import './map.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+Custom Colours
+ffe347 - minion yellow
+073b3a - rich black
+ */
+
+/* following patterns are from heropatterns.com */
+
+.bg-pattern-death-star {
+  background-image: url("/patterns/death-star.svg");
+}
+
+.bg-pattern-topography {
+  background-image: url("/patterns/topography.svg");
+}
+
+/* Line clamp utility for text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

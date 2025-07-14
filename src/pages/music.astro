@@ -1,0 +1,51 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Subheading from '../components/Subheading.astro';
+---
+
+<MainLayout title="Music | pr.">
+  <Subheading title="Music" backLink="/" />
+  <section class="my-12">
+    <p
+      class="max-w-md text-lg"
+      id="road-trippin-intro"
+      aria-label="road tripping page introduction"
+    >
+      Check out some of my all time favourite tunes to listen to (at any
+      time!)
+    </p>
+  </section>
+
+  <section class="my-12">
+    <h3 class="font-medium text-xl text-minion-yellow mb-2">assorted guitar favorites</h3>
+    <p class="font-light max-w-md text-xs mb-4">* this list is in no particular order</p>
+    <ul class="leading-8 hover:list-decimal hover:list-outside">
+      <li>Comfortably Numb by Pink Floyd</li>
+      <li>Stairway to Heaven by Led Zeppelin</li>
+      <li>Hotel California by Eagles</li>
+      <li>Eminence Front by The Who</li>
+      <li>Wish You Were Here by Pink Floyd</li>
+      <li>Free Bird by Lynyrd Skynyrd</li>
+      <li>Big Love by Lindsey Buckingham</li>
+      <li>Layla by Eric Clapton</li>
+      <li>When the Wild Wind Blows by Iron Maiden</li>
+      <li>Sweet Child o' Mine by Guns N' Roses</li>
+      <li>House of the Rising Sun by The Animals</li>
+      <li>Enter Sandman by Metallica</li>
+      <li>Pretender by Foo Fighters</li>
+      <li>Purple Haze by Jimi Hendrix</li>
+    </ul>
+  </section>
+
+  <section class="my-12">
+    <h3 class="font-medium text-xl text-minion-yellow mb-4 text-xl">my top spotify playlist</h3>
+    <iframe
+      style="border-radius: 12px"
+      src="https://open.spotify.com/embed/playlist/5ElOrYLirDLm1kuJc1TLgu?utm_source=generator&theme=0"
+      width="100%"
+      height="500"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+    ></iframe>
+  </section>
+</MainLayout> 

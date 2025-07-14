@@ -1,0 +1,9 @@
+/* CSS Custom Properties matching Tailwind config colors */
+:root {
+  --color-rich-black: #073b3a;
+  --color-vivid-blue: #44ccff;
+  --color-compliment-vivid-blue: #6fa3c7;
+  --color-minion-yellow: #ffe347;
+  --color-copyright-gray: #888888;
+  --color-subtext-gray: #adadad;
+} 

@@ -1,0 +1,220 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro"
+import Subheading from "../../components/Subheading.astro"
+import USAMap from "../../components/maps/USAMap.jsx"
+import USAMapWithErrorBoundary from "../../components/maps/USAMapWithErrorBoundary.jsx"
+import { visitedPlacesData } from "../../data"
+import {
+  countNationalParks,
+  formatVisits,
+  getUniqueStates,
+  getUniqueYears,
+  groupPlacesByCategory,
+  processTravelData,
+} from "../../utils"
+
+/*
+  HOW TO ADD MORE CITIES AND STATE HIGHLIGHTING:
+  
+  1. To add a new city, edit the visitedPlacesData array in src/data/usa-travel-data.js:
+  {
+    name: "City Name",
+    state: "State Name", 
+    coordinates: [latitude, longitude], // get from Google Maps
+    visits: [
+      { year: "2024", month: "January" }, // can have multiple visits
+      { year: "2023", month: "December" }
+    ],
+    description: "Your description",
+    categories: ["city", "national park"] // can have multiple categories
+  }
+  
+  2. For state highlighting: The map will automatically highlight states 
+     where you have visited cities. No additional configuration needed.
+  
+  3. Visit dates: You can now specify multiple visits with months and years.
+     If you only know the year, just use: { year: "2023" }
+     If you know both: { year: "2023", month: "June" }
+  
+  4. IDs are automatically generated and places are sorted chronologically
+     by first visit date.
+  
+  5. Categories: Use arrays for multiple tags like ["city", "national park"]
+*/
+
+// Process the data: add IDs and sort chronologically
+const visitedPlaces = processTravelData(visitedPlacesData)
+
+// Get statistics
+const visitedStates = getUniqueStates(visitedPlaces)
+const allYears = getUniqueYears(visitedPlaces)
+const nationalParks = countNationalParks(visitedPlaces)
+
+// Group places by category for better organization
+const placesByCategory = groupPlacesByCategory(visitedPlaces)
+---
+
+<MainLayout
+  title="Footprint in the USA | Pavan Rao"
+  description="Explore the places I've visited across the United States - from bustling cities to natural wonders."
+>
+  <Subheading title="Footprint in the USA" backLink="/experiences" />
+
+  <section class="my-12">
+    <p class="max-w-2xl text-lg mb-8">
+      I've been fortunate to explore numerous incredible destinations across the
+      United States since I moved there in 2023 for my Master's. From the
+      bustling streets of metropolitan cities like Boston, New York City, and San
+      Francisco to the serene landscapes of national parks across the country,
+      each destination has offered unique experiences and memories.
+    </p>
+  </section>
+
+  <!-- Stats -->
+  <section class="my-12" role="region" aria-label="Travel statistics">
+    <h2 class="text-xl font-medium text-minion-yellow mb-6">the stats</h2>
+    <div
+      class="grid grid-cols-2 md:grid-cols-4 gap-4"
+      role="list"
+      aria-label="Travel statistics summary"
+    >
+      <div
+        class="bg-rich-black border border-vivid-blue rounded-lg p-4 text-center"
+        role="listitem"
+      >
+        <span
+          class="text-2xl font-bold text-minion-yellow"
+          aria-label="Number of places visited"
+        >
+          {visitedPlaces.length}
+        </span>
+        <span class="text-sm text-gray-400">places visited</span>
+      </div>
+      <div
+        class="bg-rich-black border border-vivid-blue rounded-lg p-4 text-center"
+        role="listitem"
+      >
+        <span
+          class="text-2xl font-bold text-minion-yellow"
+          aria-label="Number of states visited"
+        >
+          {visitedStates.length}
+        </span>
+        <span class="text-sm text-gray-400">states</span>
+      </div>
+      <div
+        class="bg-rich-black border border-vivid-blue rounded-lg p-4 text-center"
+        role="listitem"
+      >
+        <span
+          class="text-2xl font-bold text-minion-yellow"
+          aria-label="Number of national parks visited"
+        >
+          {nationalParks}
+        </span>
+        <span class="text-sm text-gray-400">national parks</span>
+      </div>
+      <div
+        class="bg-rich-black border border-vivid-blue rounded-lg p-4 text-center"
+        role="listitem"
+      >
+        <span
+          class="text-2xl font-bold text-minion-yellow"
+          aria-label="Number of years traveled"
+        >
+          {allYears.length}
+        </span>
+        <span class="text-sm text-gray-400">years</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Map -->
+  <section class="my-12" role="region" aria-label="Interactive travel map">
+    <h2 class="text-xl font-medium text-minion-yellow mb-4">the map</h2>
+    <p class="text-sm text-gray-400 mb-6">
+      Click on any of the places to see more details.
+    </p>
+    <div class="bg-rich-black border border-vivid-blue rounded-lg p-4 mb-8">
+      <USAMapWithErrorBoundary places={visitedPlaces} client:load />
+    </div>
+  </section>
+
+  <!-- Places List -->
+  <!-- <section class="my-12" role="region" aria-label="List of visited places">
+    <h2 class="text-xl font-medium text-minion-yellow mb-6">places visited</h2>
+
+    {
+      Object.entries(placesByCategory).map(
+        ([category, places]: [string, any]) => (
+          <div class="mb-8" role="region" aria-label={`${category} category`}>
+            <h3 class="text-xl font-semibold text-white mb-4 capitalize">
+              {category === "city" ? (
+                <>
+                  <i
+                    class="fas fa-city text-minion-yellow mr-2"
+                    aria-hidden="true"
+                  />
+                  Cities
+                </>
+              ) : category === "national park" ? (
+                <>
+                  <i
+                    class="fas fa-mountain text-minion-yellow mr-2"
+                    aria-hidden="true"
+                  />
+                  National Parks
+                </>
+              ) : category === "natural wonders" ? (
+                <>
+                  <i
+                    class="fas fa-tree text-minion-yellow mr-2"
+                    aria-hidden="true"
+                  />
+                  Natural Wonders
+                </>
+              ) : category === "entertainment" ? (
+                <>
+                  <i
+                    class="fas fa-ticket-alt text-minion-yellow mr-2"
+                    aria-hidden="true"
+                  />
+                  Entertainment
+                </>
+              ) : (
+                category
+              )}
+            </h3>
+            <div
+              class="grid gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              role="list"
+              aria-label={`List of ${category}`}
+            >
+              {places.map((place: any) => (
+                <div
+                  class="bg-rich-black border border-vivid-blue rounded-lg p-3 hover:border-minion-yellow transition-colors"
+                  role="listitem"
+                >
+                  <div class="flex justify-between items-start mb-2">
+                    <h4 class="text-sm font-semibold text-minion-yellow leading-tight">
+                      {place.name}
+                    </h4>
+                    <span class="text-xs text-gray-500 ml-2">
+                      {place.state}
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-300 mb-2 line-clamp-2">
+                    {place.description}
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    Visited: {formatVisits(place.visits)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ),
+      )
+    }
+  </section> -->
+</MainLayout>

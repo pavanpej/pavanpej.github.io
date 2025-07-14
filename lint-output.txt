@@ -1,0 +1,604 @@
+
+> pavanpej.github.io@v2025-jul-04 lint:fix
+> eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix
+
+
+/home/pavan/code/pavanpej.github.io/dist/assets/ErrorBoundary.D9ACU7PG.js
+  1:261  warning  Unexpected console statement  no-console
+
+/home/pavan/code/pavanpej.github.io/dist/assets/USAMap.C4no8JNc.js
+  2:1633  error    Use array destructuring        prefer-destructuring
+  2:1967  error    'a' is defined but never used  no-unused-vars
+  2:6710  warning  Unexpected console statement   no-console
+  2:9814  error    Unreachable code               no-unreachable
+
+/home/pavan/code/pavanpej.github.io/dist/assets/client.D3ur5Pjn.js
+  1:89  error  'a' is never reassigned. Use 'const' instead  prefer-const
+
+/home/pavan/code/pavanpej.github.io/dist/assets/index.BUeSQsRq.js
+  1:1519  error  'd' is a function  no-func-assign
+  1:2666  error  Unreachable code   no-unreachable
+
+/home/pavan/code/pavanpej.github.io/dist/assets/index.BZHRJIbK.js
+  1:1558  error  'u' is never reassigned. Use 'const' instead                               prefer-const
+  1:1672  error  Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  1:1767  error  Unexpected var, use let or const instead                                   no-var
+  1:2796  error  Unexpected var, use let or const instead                                   no-var
+  1:2820  error  Unexpected var, use let or const instead                                   no-var
+  1:3369  error  'n' is never reassigned. Use 'const' instead                               prefer-const
+  1:4504  error  'n' is never reassigned. Use 'const' instead                               prefer-const
+  1:4659  error  Unexpected var, use let or const instead                                   no-var
+  1:4712  error  Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  1:4774  error  Unexpected var, use let or const instead                                   no-var
+
+/home/pavan/code/pavanpej.github.io/dist/assets/index.Bm31Yp9n.js
+  11:225     error    Use array destructuring                                                    prefer-destructuring
+  11:744     error    'i' is never reassigned. Use 'const' instead                               prefer-const
+  11:749     error    's' is never reassigned. Use 'const' instead                               prefer-const
+  11:784     error    'g' is never reassigned. Use 'const' instead                               prefer-const
+  11:832     error    'v' is never reassigned. Use 'const' instead                               prefer-const
+  11:884     error    'y' is never reassigned. Use 'const' instead                               prefer-const
+  11:1519    error    Unexpected var, use let or const instead                                   no-var
+  11:1785    error    Unexpected var, use let or const instead                                   no-var
+  11:2597    warning  Unexpected console statement                                               no-console
+  11:2924    error    Unexpected var, use let or const instead                                   no-var
+  11:3376    error    Unexpected var, use let or const instead                                   no-var
+  20:22      error    Unexpected var, use let or const instead                                   no-var
+  20:583     error    Unexpected combined character in character class                           no-misleading-character-class
+  20:1489    error    Use array destructuring                                                    prefer-destructuring
+  20:2424    error    Unnecessary escape character: \-                                           no-useless-escape
+  20:2506    error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:5809    error    'V' is never reassigned. Use 'const' instead                               prefer-const
+  20:6257    error    Unexpected var, use let or const instead                                   no-var
+  20:6431    error    Unexpected var, use let or const instead                                   no-var
+  20:6832    error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:7583    error    Unexpected var, use let or const instead                                   no-var
+  20:7818    error    Empty block statement                                                      no-empty
+  20:8922    error    'n' is never reassigned. Use 'const' instead                               prefer-const
+  20:8947    error    't' is never reassigned. Use 'const' instead                               prefer-const
+  20:9026    error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:9467    error    't' is never reassigned. Use 'const' instead                               prefer-const
+  20:9936    error    'r' is never reassigned. Use 'const' instead                               prefer-const
+  20:10434   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:10475   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:10641   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:10668   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:11203   error    Unexpected var, use let or const instead                                   no-var
+  20:11270   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:11880   error    Use array destructuring                                                    prefer-destructuring
+  20:11981   error    'r' is never reassigned. Use 'const' instead                               prefer-const
+  20:12582   error    'pe' is never reassigned. Use 'const' instead                              prefer-const
+  20:12914   error    'MSApp' is not defined                                                     no-undef
+  20:12957   error    't' is defined but never used                                              no-unused-vars
+  20:12959   error    'r' is defined but never used                                              no-unused-vars
+  20:12962   error    'MSApp' is not defined                                                     no-undef
+  20:13923   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:14020   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:15216   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:15401   error    'n' is never reassigned. Use 'const' instead                               prefer-const
+  20:16238   error    Expected to return a value in method 'get'                                 getter-return
+  20:16366   error    'r' is defined but never used                                              no-unused-vars
+  20:16368   error    'l' is defined but never used                                              no-unused-vars
+  20:16370   error    'a' is defined but never used                                              no-unused-vars
+  20:16372   error    'u' is defined but never used                                              no-unused-vars
+  20:16374   error    'o' is defined but never used                                              no-unused-vars
+  20:16376   error    'i' is defined but never used                                              no-unused-vars
+  20:16502   error    'He' is never reassigned. Use 'const' instead                              prefer-const
+  20:16542   error    'e' is defined but never used                                              no-unused-vars
+  20:16544   error    'n' is defined but never used                                              no-unused-vars
+  20:16546   error    't' is defined but never used                                              no-unused-vars
+  20:16548   error    'r' is defined but never used                                              no-unused-vars
+  20:16550   error    'l' is defined but never used                                              no-unused-vars
+  20:16552   error    'a' is defined but never used                                              no-unused-vars
+  20:16554   error    'u' is defined but never used                                              no-unused-vars
+  20:16556   error    'o' is defined but never used                                              no-unused-vars
+  20:16558   error    'i' is defined but never used                                              no-unused-vars
+  20:17090   error    Unexpected var, use let or const instead                                   no-var
+  20:17374   error    Unexpected var, use let or const instead                                   no-var
+  20:17848   error    'Ye' is never reassigned. Use 'const' instead                              prefer-const
+  20:17879   error    'Xe' is never reassigned. Use 'const' instead                              prefer-const
+  20:17908   error    'Ge' is never reassigned. Use 'const' instead                              prefer-const
+  20:17934   error    'Ze' is never reassigned. Use 'const' instead                              prefer-const
+  20:17961   error    'Je' is never reassigned. Use 'const' instead                              prefer-const
+  20:17979   error    'en' is never reassigned. Use 'const' instead                              prefer-const
+  20:18017   error    'nn' is never reassigned. Use 'const' instead                              prefer-const
+  20:18049   error    'tn' is never reassigned. Use 'const' instead                              prefer-const
+  20:18084   error    'rn' is never reassigned. Use 'const' instead                              prefer-const
+  20:18113   error    'ln' is never reassigned. Use 'const' instead                              prefer-const
+  20:18139   error    'an' is never reassigned. Use 'const' instead                              prefer-const
+  20:18182   error    Unexpected var, use let or const instead                                   no-var
+  20:19737   error    Unexpected var, use let or const instead                                   no-var
+  20:20119   error    'Tn' is never reassigned. Use 'const' instead                              prefer-const
+  20:20149   error    'Dn' is never reassigned. Use 'const' instead                              prefer-const
+  20:20160   error    'Rn' is never reassigned. Use 'const' instead                              prefer-const
+  20:20171   error    'On' is never reassigned. Use 'const' instead                              prefer-const
+  20:20177   error    'In' is never reassigned. Use 'const' instead                              prefer-const
+  20:22019   error    Unexpected var, use let or const instead                                   no-var
+  20:22044   error    Unexpected var, use let or const instead                                   no-var
+  20:22275   error    Use array destructuring                                                    prefer-destructuring
+  20:22336   error    '$n' is never reassigned. Use 'const' instead                              prefer-const
+  20:22880   error    Unexpected var, use let or const instead                                   no-var
+  20:23271   error    Unexpected var, use let or const instead                                   no-var
+  20:24918   error    't' is never reassigned. Use 'const' instead                               prefer-const
+  20:24923   error    'r' is never reassigned. Use 'const' instead                               prefer-const
+  20:24934   error    'l' is never reassigned. Use 'const' instead                               prefer-const
+  20:24973   error    'a' is never reassigned. Use 'const' instead                               prefer-const
+  20:25431   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:25744   error    Invalid typeof comparison value                                            valid-typeof
+  20:25910   error    Invalid typeof comparison value                                            valid-typeof
+  20:26040   error    'ft' is never reassigned. Use 'const' instead                              prefer-const
+  20:26157   error    'dt' is never reassigned. Use 'const' instead                              prefer-const
+  20:26167   error    'pt' is never reassigned. Use 'const' instead                              prefer-const
+  20:26197   error    'mt' is never reassigned. Use 'const' instead                              prefer-const
+  20:26207   error    'ht' is never reassigned. Use 'const' instead                              prefer-const
+  20:26679   error    'gt' is never reassigned. Use 'const' instead                              prefer-const
+  20:26689   error    'vt' is never reassigned. Use 'const' instead                              prefer-const
+  20:26722   error    'yt' is never reassigned. Use 'const' instead                              prefer-const
+  20:26756   error    'bt' is never reassigned. Use 'const' instead                              prefer-const
+  20:26820   error    'kt' is never reassigned. Use 'const' instead                              prefer-const
+  20:26915   error    'wt' is never reassigned. Use 'const' instead                              prefer-const
+  20:26925   error    'St' is never reassigned. Use 'const' instead                              prefer-const
+  20:26950   error    'xt' is never reassigned. Use 'const' instead                              prefer-const
+  20:27158   error    'Et' is never reassigned. Use 'const' instead                              prefer-const
+  20:27565   error    'Ct' is never reassigned. Use 'const' instead                              prefer-const
+  20:27769   error    'Nt' is never reassigned. Use 'const' instead                              prefer-const
+  20:28300   error    'Pt' is never reassigned. Use 'const' instead                              prefer-const
+  20:28310   error    'Tt' is never reassigned. Use 'const' instead                              prefer-const
+  20:28439   error    'Lt' is never reassigned. Use 'const' instead                              prefer-const
+  20:28560   error    'Mt' is never reassigned. Use 'const' instead                              prefer-const
+  20:28623   error    'Ft' is never reassigned. Use 'const' instead                              prefer-const
+  20:28837   error    'Dt' is never reassigned. Use 'const' instead                              prefer-const
+  20:28847   error    'Rt' is never reassigned. Use 'const' instead                              prefer-const
+  20:28863   error    'Ot' is never reassigned. Use 'const' instead                              prefer-const
+  20:28966   error    'Ut' is never reassigned. Use 'const' instead                              prefer-const
+  20:28998   error    'Vt' is never reassigned. Use 'const' instead                              prefer-const
+  20:29028   error    'At' is never reassigned. Use 'const' instead                              prefer-const
+  20:30763   error    't' is never reassigned. Use 'const' instead                               prefer-const
+  20:31411   error    Unexpected var, use let or const instead                                   no-var
+  20:31469   error    Unexpected var, use let or const instead                                   no-var
+  20:32616   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:32829   error    'vr' is never reassigned. Use 'const' instead                              prefer-const
+  20:33545   error    'Er' is never reassigned. Use 'const' instead                              prefer-const
+  20:33745   error    'Cr' is never reassigned. Use 'const' instead                              prefer-const
+  20:33819   error    't' is never reassigned. Use 'const' instead                               prefer-const
+  20:33843   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:36351   error    'e' is defined but never used                                              no-unused-vars
+  20:36353   error    'n' is defined but never used                                              no-unused-vars
+  20:36355   error    't' is defined but never used                                              no-unused-vars
+  20:36357   error    'r' is defined but never used                                              no-unused-vars
+  20:36359   error    'l' is defined but never used                                              no-unused-vars
+  20:36361   error    'a' is defined but never used                                              no-unused-vars
+  20:36363   error    'u' is defined but never used                                              no-unused-vars
+  20:36365   error    'i' is defined but never used                                              no-unused-vars
+  20:36367   error    's' is defined but never used                                              no-unused-vars
+  20:36574   error    'l' is never reassigned. Use 'const' instead                               prefer-const
+  20:36623   error    Unexpected var, use let or const instead                                   no-var
+  20:36650   error    Unexpected var, use let or const instead                                   no-var
+  20:37416   error    Unexpected var, use let or const instead                                   no-var
+  20:37943   error    Unexpected var, use let or const instead                                   no-var
+  20:38200   error    'u' is never reassigned. Use 'const' instead                               prefer-const
+  20:38208   error    Unexpected var, use let or const instead                                   no-var
+  20:38239   error    Unexpected var, use let or const instead                                   no-var
+  20:38298   error    Expected a 'break' statement before 'case'                                 no-fallthrough
+  20:38485   error    Expected a 'break' statement before 'case'                                 no-fallthrough
+  20:39129   error    Unexpected var, use let or const instead                                   no-var
+  20:39205   error    Unexpected var, use let or const instead                                   no-var
+  20:39226   error    Unexpected var, use let or const instead                                   no-var
+  20:39593   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:39667   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:40474   error    Unexpected var, use let or const instead                                   no-var
+  20:40518   error    Unexpected var, use let or const instead                                   no-var
+  20:41024   error    Expected a 'break' statement before 'case'                                 no-fallthrough
+  20:41108   error    Unexpected var, use let or const instead                                   no-var
+  20:42414   error    Unexpected var, use let or const instead                                   no-var
+  20:42711   error    Unexpected var, use let or const instead                                   no-var
+  20:42775   error    's' is never reassigned. Use 'const' instead                               prefer-const
+  20:42999   error    Unexpected control character(s) in regular expression: \x00                no-control-regex
+  20:44330   error    Unexpected var, use let or const instead                                   no-var
+  20:44599   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:44699   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:44970   error    'El' is never reassigned. Use 'const' instead                              prefer-const
+  20:45127   error    'Pl' is never reassigned. Use 'const' instead                              prefer-const
+  20:45133   error    'Tl' is never reassigned. Use 'const' instead                              prefer-const
+  20:45143   error    'Ll' is never reassigned. Use 'const' instead                              prefer-const
+  20:45353   error    'a' is never reassigned. Use 'const' instead                               prefer-const
+  20:46284   error    'n' is never reassigned. Use 'const' instead                               prefer-const
+  20:46474   error    'jl' is never reassigned. Use 'const' instead                              prefer-const
+  20:46498   error    'Yl' is never reassigned. Use 'const' instead                              prefer-const
+  20:47261   error    Unexpected var, use let or const instead                                   no-var
+  20:48971   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:49016   error    Unexpected var, use let or const instead                                   no-var
+  20:51986   error    Unexpected var, use let or const instead                                   no-var
+  20:52712   error    Unexpected var, use let or const instead                                   no-var
+  20:53519   error    Unexpected var, use let or const instead                                   no-var
+  20:54578   error    'Sa' is never reassigned. Use 'const' instead                              prefer-const
+  20:54588   error    'xa' is never reassigned. Use 'const' instead                              prefer-const
+  20:54598   error    'Ea' is never reassigned. Use 'const' instead                              prefer-const
+  20:56174   error    Unexpected var, use let or const instead                                   no-var
+  20:57159   error    Unexpected var, use let or const instead                                   no-var
+  20:57214   error    Unexpected var, use let or const instead                                   no-var
+  20:57554   error    'h' is never reassigned. Use 'const' instead                               prefer-const
+  20:57693   error    Expected a 'break' statement before 'case'                                 no-fallthrough
+  20:58448   error    'l' is never reassigned. Use 'const' instead                               prefer-const
+  20:58732   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:59617   error    'au' is never reassigned. Use 'const' instead                              prefer-const
+  20:59645   error    'uu' is never reassigned. Use 'const' instead                              prefer-const
+  20:60459   error    Unexpected var, use let or const instead                                   no-var
+  20:60998   error    Unexpected var, use let or const instead                                   no-var
+  20:61862   error    'r' is never reassigned. Use 'const' instead                               prefer-const
+  20:62144   error    't' is never reassigned. Use 'const' instead                               prefer-const
+  20:62156   error    'l' is never reassigned. Use 'const' instead                               prefer-const
+  20:62162   error    'a' is never reassigned. Use 'const' instead                               prefer-const
+  20:64959   error    'r' is never reassigned. Use 'const' instead                               prefer-const
+  20:65342   error    Empty block statement                                                      no-empty
+  20:65651   error    Unexpected var, use let or const instead                                   no-var
+  20:66759   error    Use array destructuring                                                    prefer-destructuring
+  20:66759   error    'n' is never reassigned. Use 'const' instead                               prefer-const
+  20:67161   error    'e' is never reassigned. Use 'const' instead                               prefer-const
+  20:67197   error    Unexpected var, use let or const instead                                   no-var
+  20:69335   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:70729   error    Unexpected var, use let or const instead                                   no-var
+  20:70957   warning  Unexpected console statement                                               no-console
+  20:71714   error    Unexpected var, use let or const instead                                   no-var
+  20:71863   error    Unexpected var, use let or const instead                                   no-var
+  20:72213   error    Unexpected var, use let or const instead                                   no-var
+  20:72567   error    Unexpected var, use let or const instead                                   no-var
+  20:73217   error    'l' is never reassigned. Use 'const' instead                               prefer-const
+  20:73230   error    'a' is never reassigned. Use 'const' instead                               prefer-const
+  20:74133   error    Unexpected var, use let or const instead                                   no-var
+  20:74241   error    Unexpected var, use let or const instead                                   no-var
+  20:74287   error    Unexpected var, use let or const instead                                   no-var
+  20:74386   error    Unexpected var, use let or const instead                                   no-var
+  20:74628   error    Unexpected var, use let or const instead                                   no-var
+  20:74775   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:75894   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:77384   error    'Io' is never reassigned. Use 'const' instead                              prefer-const
+  20:78619   error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:78658   error    Unexpected var, use let or const instead                                   no-var
+  20:80877   error    'a' is never reassigned. Use 'const' instead                               prefer-const
+  20:82285   error    Unexpected var, use let or const instead                                   no-var
+  20:82415   error    Unexpected var, use let or const instead                                   no-var
+  20:82567   error    'n' is never reassigned. Use 'const' instead                               prefer-const
+  20:82634   error    Unexpected var, use let or const instead                                   no-var
+  20:83400   error    Unexpected var, use let or const instead                                   no-var
+  20:83644   error    Unexpected var, use let or const instead                                   no-var
+  20:84174   error    Unexpected var, use let or const instead                                   no-var
+  20:84205   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:84224   error    Unexpected var, use let or const instead                                   no-var
+  20:84487   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:84932   error    Unnecessary escape character: \/                                           no-useless-escape
+  20:85799   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:86107   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:91040   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:91061   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:91107   error    Unexpected var, use let or const instead                                   no-var
+  20:91131   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:91311   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:91413   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:91493   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:91517   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:91569   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:91924   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:92051   error    Unexpected var, use let or const instead                                   no-var
+  20:92151   error    'Jo' is never reassigned. Use 'const' instead                              prefer-const
+  20:94328   error    Empty block statement                                                      no-empty
+  20:94363   error    Expected a 'break' statement before 'case'                                 no-fallthrough
+  20:94370   error    Unexpected var, use let or const instead                                   no-var
+  20:94868   error    'u' is never reassigned. Use 'const' instead                               prefer-const
+  20:95577   error    'a' is never reassigned. Use 'const' instead                               prefer-const
+  20:95581   error    'u' is never reassigned. Use 'const' instead                               prefer-const
+  20:96278   error    Unexpected var, use let or const instead                                   no-var
+  20:96367   error    Unexpected var, use let or const instead                                   no-var
+  20:96538   error    Unexpected var, use let or const instead                                   no-var
+  20:96577   error    Unexpected var, use let or const instead                                   no-var
+  20:96767   error    Unexpected var, use let or const instead                                   no-var
+  20:96842   error    Unexpected var, use let or const instead                                   no-var
+  20:97870   error    Unexpected var, use let or const instead                                   no-var
+  20:98406   error    Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+  20:98933   error    Expected a 'break' statement before 'case'                                 no-fallthrough
+  20:99029   error    Unexpected var, use let or const instead                                   no-var
+  20:99097   error    Unexpected var, use let or const instead                                   no-var
+  20:99185   error    Unexpected var, use let or const instead                                   no-var
+  20:99343   error    'n' is defined but never used                                              no-unused-vars
+  20:99345   error    't' is defined but never used                                              no-unused-vars
+  20:99373   error    'n' is defined but never used                                              no-unused-vars
+  20:99375   error    't' is defined but never used                                              no-unused-vars
+  20:99417   error    'l' is never reassigned. Use 'const' instead                               prefer-const
+  20:99870   error    Unexpected var, use let or const instead                                   no-var
+  20:99970   error    Unexpected var, use let or const instead                                   no-var
+  20:100197  error    Unexpected var, use let or const instead                                   no-var
+  20:100250  error    Unexpected var, use let or const instead                                   no-var
+  20:100385  error    Unexpected var, use let or const instead                                   no-var
+  20:101209  error    Unexpected var, use let or const instead                                   no-var
+  20:101268  error    Unexpected var, use let or const instead                                   no-var
+  20:101392  error    Unexpected var, use let or const instead                                   no-var
+  20:101449  error    Unexpected var, use let or const instead                                   no-var
+  20:101618  error    Unexpected var, use let or const instead                                   no-var
+  20:103175  error    Unexpected var, use let or const instead                                   no-var
+  20:103190  error    Unexpected var, use let or const instead                                   no-var
+  20:103541  error    Unexpected var, use let or const instead                                   no-var
+  20:103633  error    'a' is never reassigned. Use 'const' instead                               prefer-const
+  20:105862  error    Unexpected var, use let or const instead                                   no-var
+  20:106652  error    'u' is never reassigned. Use 'const' instead                               prefer-const
+  20:107452  error    Unexpected var, use let or const instead                                   no-var
+  20:109609  error    Unexpected var, use let or const instead                                   no-var
+  20:109944  error    Unexpected var, use let or const instead                                   no-var
+  20:110465  error    Unexpected var, use let or const instead                                   no-var
+  20:110769  error    Unexpected var, use let or const instead                                   no-var
+  20:111333  error    Empty block statement                                                      no-empty
+  20:111681  error    'n' is never reassigned. Use 'const' instead                               prefer-const
+  20:111697  error    't' is never reassigned. Use 'const' instead                               prefer-const
+  20:111751  error    Unexpected var, use let or const instead                                   no-var
+  20:111857  error    Unexpected var, use let or const instead                                   no-var
+  20:111892  error    Unexpected var, use let or const instead                                   no-var
+  20:113010  error    Empty block statement                                                      no-empty
+  20:113833  error    'n' is never reassigned. Use 'const' instead                               prefer-const
+  20:113936  error    Unexpected var, use let or const instead                                   no-var
+  20:117054  error    Unexpected var, use let or const instead                                   no-var
+  20:118284  error    Unexpected var, use let or const instead                                   no-var
+  20:118973  error    Unexpected var, use let or const instead                                   no-var
+  20:119011  error    Unexpected var, use let or const instead                                   no-var
+  20:119063  error    Unexpected var, use let or const instead                                   no-var
+  20:120153  error    Unexpected var, use let or const instead                                   no-var
+  20:122746  warning  Unexpected console statement                                               no-console
+  20:123126  error    Unexpected var, use let or const instead                                   no-var
+  20:123325  error    Unexpected var, use let or const instead                                   no-var
+  20:123452  error    Expected a conditional expression and instead saw an assignment            no-cond-assign
+  20:123557  error    Unexpected var, use let or const instead                                   no-var
+  20:124155  error    Unexpected var, use let or const instead                                   no-var
+  20:124273  error    Unexpected var, use let or const instead                                   no-var
+  20:125206  error    'Te' is a function                                                         no-func-assign
+  20:125212  error    'Le' is a function                                                         no-func-assign
+  20:126154  error    '__REACT_DEVTOOLS_GLOBAL_HOOK__' is not defined                            no-undef
+  20:126257  error    Empty block statement                                                      no-empty
+  20:127406  error    'r' is never reassigned. Use 'const' instead                               prefer-const
+  20:128468  error    '__REACT_DEVTOOLS_GLOBAL_HOOK__' is not defined                            no-undef
+  20:128512  error    '__REACT_DEVTOOLS_GLOBAL_HOOK__' is not defined                            no-undef
+  20:128564  warning  Unexpected console statement                                               no-console
+
+/home/pavan/code/pavanpej.github.io/dist/assets/jsx-runtime.CgJOrcs1.js
+  1:298  error  'f' is never reassigned. Use 'const' instead                               prefer-const
+  1:424  error  Do not access Object.prototype method 'hasOwnProperty' from target object  no-prototype-builtins
+
+/home/pavan/code/pavanpej.github.io/dist/assets/leaflet-src.CezhMi1v.js
+  1:13      error    'i' is defined but never used                  no-unused-vars
+  5:704     error    Use array destructuring                        prefer-destructuring
+  5:711     error    Use array destructuring                        prefer-destructuring
+  5:2560    error    'L' is not defined                             no-undef
+  5:2563    error    'L' is not defined                             no-undef
+  5:2619    error    'L' is not defined                             no-undef
+  5:2635    warning  Unexpected console statement                   no-console
+  5:4590    warning  Unexpected console statement                   no-console
+  5:4877    warning  Unexpected console statement                   no-console
+  5:5422    warning  Unexpected console statement                   no-console
+  5:10098   error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:10116   error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:11192   error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:11210   error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:12411   error    Unexpected var, use let or const instead       no-var
+  5:14022   error    Use array destructuring                        prefer-destructuring
+  5:14035   error    Use array destructuring                        prefer-destructuring
+  5:14048   error    Use array destructuring                        prefer-destructuring
+  5:14066   error    Use array destructuring                        prefer-destructuring
+  5:14819   error    'tt' is never reassigned. Use 'const' instead  prefer-const
+  5:14853   error    'it' is never reassigned. Use 'const' instead  prefer-const
+  5:14881   error    'et' is never reassigned. Use 'const' instead  prefer-const
+  5:14915   error    'nt' is never reassigned. Use 'const' instead  prefer-const
+  5:14974   error    'ot' is never reassigned. Use 'const' instead  prefer-const
+  5:14990   error    'st' is never reassigned. Use 'const' instead  prefer-const
+  5:15007   error    'rt' is never reassigned. Use 'const' instead  prefer-const
+  5:15043   error    'at' is never reassigned. Use 'const' instead  prefer-const
+  5:15109   error    'ht' is never reassigned. Use 'const' instead  prefer-const
+  5:15162   error    'lt' is never reassigned. Use 'const' instead  prefer-const
+  5:15180   error    'ut' is never reassigned. Use 'const' instead  prefer-const
+  5:15201   error    'ct' is never reassigned. Use 'const' instead  prefer-const
+  5:15231   error    '_t' is never reassigned. Use 'const' instead  prefer-const
+  5:15252   error    'dt' is never reassigned. Use 'const' instead  prefer-const
+  5:15269   error    'pt' is never reassigned. Use 'const' instead  prefer-const
+  5:15291   error    'mt' is never reassigned. Use 'const' instead  prefer-const
+  5:15332   error    'ft' is never reassigned. Use 'const' instead  prefer-const
+  5:15357   error    'gt' is never reassigned. Use 'const' instead  prefer-const
+  5:15428   error    'vt' is never reassigned. Use 'const' instead  prefer-const
+  5:15453   error    'yt' is never reassigned. Use 'const' instead  prefer-const
+  5:15501   error    'xt' is never reassigned. Use 'const' instead  prefer-const
+  5:15550   error    'wt' is never reassigned. Use 'const' instead  prefer-const
+  5:15560   error    'bt' is never reassigned. Use 'const' instead  prefer-const
+  5:15570   error    'Pt' is never reassigned. Use 'const' instead  prefer-const
+  5:15617   error    'Lt' is never reassigned. Use 'const' instead  prefer-const
+  5:15649   error    'Tt' is never reassigned. Use 'const' instead  prefer-const
+  5:15697   error    'Mt' is never reassigned. Use 'const' instead  prefer-const
+  5:15729   error    'zt' is never reassigned. Use 'const' instead  prefer-const
+  5:15739   error    'Ct' is never reassigned. Use 'const' instead  prefer-const
+  5:15749   error    'Zt' is never reassigned. Use 'const' instead  prefer-const
+  5:15832   error    'St' is never reassigned. Use 'const' instead  prefer-const
+  5:15903   error    Expected to return a value in method 'get'     getter-return
+  5:16038   error    Empty block statement                          no-empty
+  5:16052   error    'Et' is never reassigned. Use 'const' instead  prefer-const
+  5:16101   error    'kt' is never reassigned. Use 'const' instead  prefer-const
+  5:16158   error    'Ot' is never reassigned. Use 'const' instead  prefer-const
+  5:16295   error    'At' is never reassigned. Use 'const' instead  prefer-const
+  5:16502   error    'Bt' is never reassigned. Use 'const' instead  prefer-const
+  5:16543   error    'It' is never reassigned. Use 'const' instead  prefer-const
+  5:16656   error    Unexpected var, use let or const instead       no-var
+  5:17472   warning  Unexpected console statement                   no-console
+  5:17575   warning  Unexpected console statement                   no-console
+  5:18178   error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:18936   error    'ui' is never reassigned. Use 'const' instead  prefer-const
+  5:19017   error    'ci' is never reassigned. Use 'const' instead  prefer-const
+  5:19103   error    '_i' is never reassigned. Use 'const' instead  prefer-const
+  5:20563   error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:23012   error    Use array destructuring                        prefer-destructuring
+  5:23300   error    'a' is never reassigned. Use 'const' instead   prefer-const
+  5:24502   error    Unexpected var, use let or const instead       no-var
+  5:28254   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:28294   error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:35536   error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:35556   error    's' is never reassigned. Use 'const' instead   prefer-const
+  5:35576   error    'r' is never reassigned. Use 'const' instead   prefer-const
+  5:35595   error    'a' is never reassigned. Use 'const' instead   prefer-const
+  5:35614   error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:35643   error    'l' is never reassigned. Use 'const' instead   prefer-const
+  5:35694   error    'u' is never reassigned. Use 'const' instead   prefer-const
+  5:35729   error    'c' is never reassigned. Use 'const' instead   prefer-const
+  5:35739   error    '_' is never reassigned. Use 'const' instead   prefer-const
+  5:35749   error    'd' is never reassigned. Use 'const' instead   prefer-const
+  5:40748   error    Unexpected var, use let or const instead       no-var
+  5:41621   error    Unexpected var, use let or const instead       no-var
+  5:41740   error    Use array destructuring                        prefer-destructuring
+  5:48156   error    Unexpected var, use let or const instead       no-var
+  5:51610   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:51644   error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:52265   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:52292   error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:52297   error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:52329   error    Unexpected var, use let or const instead       no-var
+  5:52661   error    Unexpected var, use let or const instead       no-var
+  5:55998   error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:56283   error    'i' is never reassigned. Use 'const' instead   prefer-const
+  5:58564   error    Unexpected var, use let or const instead       no-var
+  5:61010   error    '_' is never reassigned. Use 'const' instead   prefer-const
+  5:61399   warning  Unexpected console statement                   no-console
+  5:61470   error    Use array destructuring                        prefer-destructuring
+  5:61493   error    '_' is never reassigned. Use 'const' instead   prefer-const
+  5:61812   error    'u' is never reassigned. Use 'const' instead   prefer-const
+  5:61916   error    Unexpected var, use let or const instead       no-var
+  5:62017   error    'Te' is never reassigned. Use 'const' instead  prefer-const
+  5:62383   error    's' is never reassigned. Use 'const' instead   prefer-const
+  5:62592   error    Unexpected var, use let or const instead       no-var
+  5:62894   error    'a' is never reassigned. Use 'const' instead   prefer-const
+  5:62904   error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:62914   error    'l' is never reassigned. Use 'const' instead   prefer-const
+  5:62922   error    'u' is never reassigned. Use 'const' instead   prefer-const
+  5:63300   error    'l' is never reassigned. Use 'const' instead   prefer-const
+  5:63522   warning  Unexpected console statement                   no-console
+  5:63710   warning  Unexpected console statement                   no-console
+  5:63781   error    Use array destructuring                        prefer-destructuring
+  5:63804   error    'c' is never reassigned. Use 'const' instead   prefer-const
+  5:64082   error    Use array destructuring                        prefer-destructuring
+  5:64731   error    'i' is never reassigned. Use 'const' instead   prefer-const
+  5:64745   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:64764   error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:64781   error    's' is never reassigned. Use 'const' instead   prefer-const
+  5:64800   error    'r' is never reassigned. Use 'const' instead   prefer-const
+  5:64816   error    'a' is never reassigned. Use 'const' instead   prefer-const
+  5:64945   error    Unexpected var, use let or const instead       no-var
+  5:67458   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:68571   error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:70314   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:70824   error    Unexpected var, use let or const instead       no-var
+  5:71378   error    't' is never reassigned. Use 'const' instead   prefer-const
+  5:74841   error    't' is never reassigned. Use 'const' instead   prefer-const
+  5:74856   error    'i' is never reassigned. Use 'const' instead   prefer-const
+  5:74913   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:75301   error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:79866   error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:79880   error    's' is never reassigned. Use 'const' instead   prefer-const
+  5:79902   error    'r' is never reassigned. Use 'const' instead   prefer-const
+  5:79923   error    'a' is never reassigned. Use 'const' instead   prefer-const
+  5:79944   error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:79967   error    'l' is never reassigned. Use 'const' instead   prefer-const
+  5:80739   error    Unexpected var, use let or const instead       no-var
+  5:81392   error    Unexpected var, use let or const instead       no-var
+  5:81888   error    's' is never reassigned. Use 'const' instead   prefer-const
+  5:81907   error    'r' is never reassigned. Use 'const' instead   prefer-const
+  5:82241   error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:82727   error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:83624   error    'i' is never reassigned. Use 'const' instead   prefer-const
+  5:83646   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:83818   error    Unexpected var, use let or const instead       no-var
+  5:84428   error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:85130   error    'r' is never reassigned. Use 'const' instead   prefer-const
+  5:85164   error    'a' is never reassigned. Use 'const' instead   prefer-const
+  5:85187   error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:85192   error    'l' is never reassigned. Use 'const' instead   prefer-const
+  5:85212   error    'u' is never reassigned. Use 'const' instead   prefer-const
+  5:86070   error    Unexpected var, use let or const instead       no-var
+  5:86286   error    Unexpected var, use let or const instead       no-var
+  5:86946   error    'i' is never reassigned. Use 'const' instead   prefer-const
+  5:86967   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:90627   error    Unexpected var, use let or const instead       no-var
+  5:94111   error    't' is never reassigned. Use 'const' instead   prefer-const
+  5:94181   error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:97336   error    's' is never reassigned. Use 'const' instead   prefer-const
+  5:97370   error    'r' is never reassigned. Use 'const' instead   prefer-const
+  5:97403   error    'a' is never reassigned. Use 'const' instead   prefer-const
+  5:97446   error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:97493   error    'l' is never reassigned. Use 'const' instead   prefer-const
+  5:100277  error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:100289  error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:100307  error    's' is never reassigned. Use 'const' instead   prefer-const
+  5:100349  error    'r' is never reassigned. Use 'const' instead   prefer-const
+  5:100408  error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:100424  error    'l' is never reassigned. Use 'const' instead   prefer-const
+  5:100441  error    'u' is never reassigned. Use 'const' instead   prefer-const
+  5:100466  error    'c' is never reassigned. Use 'const' instead   prefer-const
+  5:106112  error    Unexpected var, use let or const instead       no-var
+  5:106395  error    't' is never reassigned. Use 'const' instead   prefer-const
+  5:107294  error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:107708  error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:111459  error    Unexpected var, use let or const instead       no-var
+  5:112406  error    'i' is never reassigned. Use 'const' instead   prefer-const
+  5:115969  error    'i' is never reassigned. Use 'const' instead   prefer-const
+  5:121153  error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:121190  error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:122128  error    'i' is never reassigned. Use 'const' instead   prefer-const
+  5:122482  error    'r' is never reassigned. Use 'const' instead   prefer-const
+  5:122493  error    'a' is never reassigned. Use 'const' instead   prefer-const
+  5:122504  error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:123311  error    Unexpected var, use let or const instead       no-var
+  5:123947  error    Unexpected var, use let or const instead       no-var
+  5:125056  error    Empty block statement                          no-empty
+  5:125794  error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:125806  error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:135050  error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:135095  error    's' is never reassigned. Use 'const' instead   prefer-const
+  5:135133  error    'r' is never reassigned. Use 'const' instead   prefer-const
+  5:135151  error    'a' is never reassigned. Use 'const' instead   prefer-const
+  5:135171  error    'h' is never reassigned. Use 'const' instead   prefer-const
+  5:135193  error    'l' is never reassigned. Use 'const' instead   prefer-const
+  5:135225  error    'u' is never reassigned. Use 'const' instead   prefer-const
+  5:135245  error    'c' is never reassigned. Use 'const' instead   prefer-const
+  5:136515  error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:136534  error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:136784  error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:136804  error    'o' is never reassigned. Use 'const' instead   prefer-const
+  5:137101  error    'e' is never reassigned. Use 'const' instead   prefer-const
+  5:137113  error    'n' is never reassigned. Use 'const' instead   prefer-const
+  5:139014  error    Use array destructuring                        prefer-destructuring
+  5:139678  error    Use array destructuring                        prefer-destructuring
+
+/home/pavan/code/pavanpej.github.io/src/components/errors/ErrorBoundary.jsx
+  36:9  error  Parsing error: Unexpected token <
+
+/home/pavan/code/pavanpej.github.io/src/components/maps/InfoPanel.jsx
+  17:5  error  Parsing error: Unexpected token <
+
+/home/pavan/code/pavanpej.github.io/src/components/maps/USAMap.jsx
+  14:3  error  Parsing error: Unexpected token <
+
+/home/pavan/code/pavanpej.github.io/src/components/maps/USAMapWithErrorBoundary.jsx
+  8:5  error  Parsing error: Unexpected token <
+
+/home/pavan/code/pavanpej.github.io/src/layouts/MainLayout.astro
+   95:15  error    Parsing error: Unexpected token as
+  128:13  warning  Unexpected console statement        no-console
+  134:13  warning  Unexpected console statement        no-console
+  139:13  warning  Unexpected console statement        no-console
+  144:13  warning  Unexpected console statement        no-console
+  149:13  warning  Unexpected console statement        no-console
+  153:11  warning  Unexpected console statement        no-console
+
+/home/pavan/code/pavanpej.github.io/src/pages/experiences/usa.astro
+   4:8  error  'USAMap' is defined but never used                     no-unused-vars
+   9:3  error  'formatVisits' is defined but never used               no-unused-vars
+  54:7  error  'placesByCategory' is assigned a value but never used  no-unused-vars
+
+/home/pavan/code/pavanpej.github.io/src/utils/hooks/useMapLoader.js
+  36:9  warning  Unexpected console statement  no-console
+
+/home/pavan/code/pavanpej.github.io/src/utils/travel-helpers.js
+  44:11  error  Use array destructuring            prefer-destructuring
+  58:18  error  'index' is defined but never used  no-unused-vars
+
+✖ 565 problems (543 errors, 22 warnings)
+

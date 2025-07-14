@@ -1,0 +1,98 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import SocialLink from '../components/SocialLink.astro';
+import Link from '../components/Link.astro';
+---
+
+<MainLayout title="Pavan Rao">
+  <section class="my-12" id="greeting" aria-label="greeting section">
+    <h2 class="text-minion-yellow text-3xl font-bold mb-2">
+      Hi, I'm Pavan Rao.{" "}
+      <span role="img" aria-label="jsx-a11y/accessible-emoji">
+        👋
+      </span>
+    </h2>
+  </section>
+  <section class="my-12" id="whoami" aria-label="whoami section">
+    <h3 class="font-medium text-minion-yellow mb-2">whoami</h3>
+    <p class="max-w-md">
+      I am an avid sci-fi reader, story-mode gamer, occasional biker, and a professional software engineer currently
+      building <span class="text-copyright-gray">(and occasionally breaking)</span> stuff at Infoblox as an SDE 2.
+      I also hold a Master's degree in CS from Northeastern's
+      <Link href="https://www.khoury.northeastern.edu/" external>Khoury College</Link> in Boston, MA.
+      Although my current focus is distributed systems and cloud, my professional interests include forays into
+      developer tooling, software architecture, full-stack software engineering, web, and the DevOps space.
+    </p>
+  </section>
+  <section class="my-12" id="tech" aria-label="tech section">
+    <h3 class="font-medium text-minion-yellow mb-2">tech</h3>
+    <p class="max-w-md">
+      I have extensive experience working on Kubernetes development with Go and Docker, and have worked
+      with JavaScript (Angular, React), Python, and Java in the past. My tech stack also includes experience
+      with Postgres, MySQL, MongoDB, and some novice level Linux shell scripting.
+      I am a developer that strives for clean and maintainable code.
+    </p>
+  </section>
+  <section class="my-12" id="entertainment" aria-label="entertainment section">
+    <h3 class="font-medium text-minion-yellow mb-2">entertainment</h3>
+    <p class="max-w-md">
+      Apart from technology (of all sorts), I enjoy spending time reading science fiction, fantasy, and
+      mystery novels (particular preference for spy thrillers here), or on YouTube browsing content in
+      science, tech, comedy, gaming, and guitar music.
+    </p>
+  </section>
+  <section class="my-12 max-w-md" id="miscellaneous" aria-label="miscellaneous section">
+    <h3 class="font-medium text-minion-yellow mb-2">miscellaneous</h3>
+    <p>Other content from yours truly :</p>
+    <ul>
+      <li>
+        <Link href="/experiences" arrow>
+          experiences
+        </Link>
+      </li>
+      <li>
+        <Link href="/music" arrow>
+          music
+        </Link>
+      </li>
+    </ul>
+  </section>
+  <section class="my-12" id="social" aria-label="social section">
+    <h3 class="font-medium text-minion-yellow mb-2">social</h3>
+    <p class="max-w-xs">
+      You can reach out to me at <br />
+      <SocialLink href="mailto:pavanpej@gmail.com" class="text-vivid-blue">
+        pavanpej@gmail.com
+      </SocialLink>
+      or find me on <br />
+      GitHub, X (formerly Twitter), or LinkedIn
+    </p>
+    <div class="flex space-x-4 mt-8" aria-label="social links">
+      <span aria-label="email">
+        <SocialLink href="mailto:pavanpej@gmail.com" faIcon="fa-solid fa-envelope text-xl" class="text-white">
+        </SocialLink>
+      </span>
+      <span aria-label="GitHub">
+        <SocialLink href="https://github.com/pavanpej" faIcon="fa-brands fa-github text-xl" class="text-white">
+        </SocialLink>
+      </span>
+      <span aria-label="X">
+        <SocialLink href="https://x.com/pavanpej" faIcon="fa-brands fa-square-x-twitter text-xl" class="text-white">
+        </SocialLink>
+      </span>
+      <span aria-label="LinkedIn">
+        <SocialLink href="https://linkedin.com/in/pavanrrao" faIcon="fa-brands fa-linkedin text-xl" class="text-white">
+        </SocialLink>
+      </span>
+    </div>
+  </section>
+  <section class="my-12" id="resume" aria-label="resume section">
+    <h3 class="font-medium text-minion-yellow mb-2">resume</h3>
+    <p class="max-w-md">
+      My resume can be found
+      <Link href="/resume" underline icon="fas fa-external-link-alt">
+        here
+      </Link>
+    </p>
+  </section>
+</MainLayout>

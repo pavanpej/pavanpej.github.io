@@ -1,0 +1,40 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+      
+      - name: Cache Astro build
+        uses: actions/cache@v4
+        with:
+          path: .astro
+          key: ${{ runner.os }}-astro-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-astro-
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run ESLint
+        run: npm run lint
+      
+      - name: Check Prettier formatting
+        run: npx prettier --check "**/*.{js,jsx,ts,tsx,json,md,astro}"
+      
+      - name: Run TypeScript and Astro check
+        run: npx astro check 

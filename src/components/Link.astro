@@ -1,0 +1,52 @@
+---
+export interface Props {
+  href: string;
+  class?: string;
+  external?: boolean;
+  underline?: boolean;
+  arrow?: boolean;
+  icon?: string;
+  ariaLabel?: string;
+}
+
+const { 
+  href, 
+  class: className = "", 
+  external = false, 
+  underline = false,
+  arrow = false,
+  icon = "",
+  ariaLabel = ""
+} = Astro.props;
+
+// Determine if this is an external link
+const isExternal = external || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:');
+
+// Base styles
+const baseStyles = "transition-all focus:outline-none focus:ring-2 focus:ring-minion-yellow focus:ring-offset-2 focus:ring-offset-rich-black";
+const linkStyles = underline 
+  ? "text-vivid-blue hover:text-minion-yellow border-b-2 border-vivid-blue hover:border-minion-yellow pb-1" 
+  : "text-vivid-blue hover:text-minion-yellow";
+
+// Combine all styles
+const combinedStyles = `${baseStyles} ${linkStyles} ${className}`;
+
+// Determine target and rel attributes
+const target = isExternal ? "_blank" : undefined;
+const rel = isExternal ? "noopener noreferrer" : undefined;
+
+// Generate aria-label for external links
+const generatedAriaLabel = ariaLabel || (isExternal ? `${Astro.slots.render('default')} (opens in new tab)` : undefined);
+---
+
+<a 
+  href={href} 
+  class={combinedStyles}
+  target={target}
+  rel={rel}
+  aria-label={generatedAriaLabel}
+>
+  <slot />
+  {icon && <i class={`${icon} text-sm`} aria-hidden="true"></i>}
+  {arrow && <i class="fas fa-arrow-right-long text-sm" aria-hidden="true"></i>}
+</a>

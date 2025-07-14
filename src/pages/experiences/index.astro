@@ -1,0 +1,34 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Subheading from '../../components/Subheading.astro';
+import Link from '../../components/Link.astro';
+---
+
+<MainLayout title="Experiences | pr.">
+  <Subheading title="Experiences" backLink="/" />
+
+  <section class="my-12">
+    <p
+      class="max-w-md"
+      id="experiences-intro"
+      aria-label="experiences page introduction"
+    >
+      Check out some of my experiences below.
+    </p>
+  </section>
+
+  <section class="my-12 max-w-md" id="experiences-list" aria-label="experiences list">
+    <ul class="space-y-4">
+      <li>
+        <Link href="/experiences/road" arrow>
+          Road Trippin'
+        </Link>
+      </li>
+      <li>
+        <Link href="/experiences/usa" arrow>
+          Footprint in the USA
+        </Link>
+      </li>
+    </ul>
+  </section>
+</MainLayout> 

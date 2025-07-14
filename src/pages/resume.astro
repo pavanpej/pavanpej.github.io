@@ -1,0 +1,75 @@
+---
+import MainLayout from "../layouts/MainLayout.astro"
+import Subheading from "../components/Subheading.astro"
+import Link from "../components/Link.astro"
+
+const resumeUrl = "/Pavan-Ramachandra-Rao-Resume.pdf"
+---
+
+<MainLayout
+  title="Resume | Pavan Rao"
+  description="Download Pavan Rao's resume - SDE 2 at Infoblox, MSCS from Northeastern University with experience in distributed systems, web development, and cloud."
+>
+  <Subheading title="Resume" backLink="/" />
+
+  <section class="my-12">
+    <div class="max-w-md">
+      <div id="loading" class="mb-6">
+        <p class="text-lg mb-4">Redirecting...</p>
+        <div class="animate-pulse">
+          <div class="h-2 bg-minion-yellow rounded mb-2"></div>
+          <div class="h-2 bg-minion-yellow rounded mb-2 w-3/4"></div>
+          <div class="h-2 bg-minion-yellow rounded w-1/2"></div>
+        </div>
+      </div>
+
+      <div id="fallback" class="hidden">
+        <p class="text-lg mb-4">Redirect didn't work automatically?</p>
+        <Link
+          href={resumeUrl}
+          underline
+          icon="fas fa-external-link-alt"
+          class="text-lg"
+        >
+          Click here to download my resume
+        </Link>
+
+        <div class="mt-8 text-subtext-gray text-sm">
+          <p>Or you can:</p>
+          <ul class="mt-2 space-y-1 list-disc list-outside">
+            <li>Right-click and "Save link as..."</li>
+            <li>Check your browser's download folder</li>
+            <li>Disable popup blockers if needed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<script>
+  // Show fallback after 3 seconds if redirect hasn't worked
+  setTimeout(() => {
+    const loading = document.getElementById("loading")
+    const fallback = document.getElementById("fallback")
+
+    if (loading && fallback) {
+      loading.classList.add("hidden")
+      fallback.classList.remove("hidden")
+    }
+  }, 3000)
+
+  // Attempt redirect
+  try {
+    window.location.href = "/Pavan-Ramachandra-Rao-Resume.pdf"
+  } catch (error) {
+    // Show fallback immediately if redirect fails
+    const loading = document.getElementById("loading")
+    const fallback = document.getElementById("fallback")
+
+    if (loading && fallback) {
+      loading.classList.add("hidden")
+      fallback.classList.remove("hidden")
+    }
+  }
+</script>
