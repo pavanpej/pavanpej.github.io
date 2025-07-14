@@ -109,6 +109,8 @@ Thumbs.db
 
 # Lighthouse CI results
 .lighthouseci/
+lighthouse-reports/
+lighthouserc.local.json
 
 # Bundle analyzer
 bundle-analyzer-report.html
