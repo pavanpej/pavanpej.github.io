@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
     inputs:
       url:
-        description: 'URL to test'
+        description: "URL to test"
         required: false
-        default: 'https://pavanpej.com'
+        default: "https://pavanpej.com"
 
 jobs:
   lighthouse:
@@ -17,30 +17,28 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
-          cache: 'npm'
-      
+          node-version: "24"
+          cache: "npm"
+
       - name: Install Lighthouse CI
         run: npm install -g @lhci/cli@0.12.x
-      
+
       - name: Run Lighthouse CI
         run: |
           lhci autorun --upload.target=temporary-public-storage
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
-          LHCI_BUILD_CONTEXT__COMMIT_TIME: ${{ github.event.head_commit.timestamp }}
           LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.ref_name }}
-          LHCI_BUILD_CONTEXT__COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
-      
+
       - name: Upload Lighthouse results
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: lighthouse-results
           path: .lighthouseci/
-          retention-days: 30 
+          retention-days: 30

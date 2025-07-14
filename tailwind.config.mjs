@@ -18,21 +18,5 @@ export default {
       },
     },
   },
-  plugins: [],
-  // Purge unused styles in production
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-    options: {
-      safelist: [
-        // Keep dynamic classes that might be generated
-        /^bg-/,
-        /^text-/,
-        /^border-/,
-        /^hover:/,
-        /^focus:/,
-        /^active:/
-      ]
-    }
-  }
+  plugins: []
 } 

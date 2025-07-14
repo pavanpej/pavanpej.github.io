@@ -1,10 +1,10 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
-import Subheading from '../../components/Subheading.astro';
-import Link from '../../components/Link.astro';
+import MainLayout from "../../layouts/MainLayout.astro"
+import Subheading from "../../components/Subheading.astro"
+import Link from "../../components/Link.astro"
 ---
 
-<MainLayout title="Experiences | pr.">
+<MainLayout title="Experiences">
   <Subheading title="Experiences" backLink="/" />
 
   <section class="my-12">
@@ -17,18 +17,18 @@ import Link from '../../components/Link.astro';
     </p>
   </section>
 
-  <section class="my-12 max-w-md" id="experiences-list" aria-label="experiences list">
+  <section
+    class="my-12 max-w-md"
+    id="experiences-list"
+    aria-label="experiences list"
+  >
     <ul class="space-y-4">
       <li>
-        <Link href="/experiences/road" arrow>
-          Road Trippin'
-        </Link>
+        <Link href="/experiences/road" arrow> Road Trippin' </Link>
       </li>
       <li>
-        <Link href="/experiences/usa" arrow>
-          Footprint in the USA
-        </Link>
+        <Link href="/experiences/usa" arrow> Footprint in the USA </Link>
       </li>
     </ul>
   </section>
-</MainLayout> 
+</MainLayout>

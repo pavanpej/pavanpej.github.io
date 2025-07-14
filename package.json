@@ -1,11 +1,12 @@
 {
   "name": "pavanpej.github.io",
+  "version": "v2025-jul-04",
+  "description": "The personal website of Pavan Rao",
   "type": "module",
   "private": true,
-  "description": "The personal website of Pavan Rao",
-  "version": "v2025-jul-04",
   "author": "Pavan Rao",
   "license": "MIT",
+  "homepage": "https://pavanpej.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pavanpej/pavanpej.github.io.git"
@@ -13,72 +14,70 @@
   "bugs": {
     "url": "https://github.com/pavanpej/pavanpej.github.io/issues"
   },
-  "homepage": "https://github.com/pavanpej/pavanpej.github.io#readme",
   "keywords": [
     "html5",
     "css",
     "js",
     "astro",
+    "personal-website",
+    "portfolio",
     "react",
     "web",
     "development",
     "docker",
     "kubernetes",
-    "cloud"
+    "cloud",
+    "tailwindcss",
+    "javascript"
   ],
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "analyze": "npm run build && npx vite-bundle-analyzer dist/assets",
     "build": "astro build",
-    "build:analyze": "ANALYZE=true astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,astro}\"",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix",
-    "clean": "rm -rf dist .astro"
+    "format": "prettier --write \"**/*.{js,jsx,json,md,astro,yml,yaml}\" --plugin=prettier-plugin-astro",
+    "lint": "eslint . --ext .js,.jsx,.astro",
+    "lint:fix": "eslint . --ext .js,.jsx,.astro --fix",
+    "check": "astro check",
+    "clean": "rm -rf dist .astro",
+    "analyze": "npm run build && npx vite-bundle-analyzer dist/assets"
   },
   "dependencies": {
+    "astro": "^4.0.0",
     "@astrojs/react": "^3.0.0",
+    "@astrojs/tailwind": "^6.0.2",
     "@fontsource/fira-sans": "^5.0.0",
     "@fontsource/glegoo": "^5.0.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
-    "astro": "^4.0.0",
     "leaflet": "^1.9.4",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
+    "tailwindcss": "^3.3.0",
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/check": "^0.9.4",
     "@tailwindcss/vite": "^4.1.11",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.36.0",
     "astro-eslint-parser": "^1.2.2",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.34.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.1.1",
-    "stylelint-config-recommended": "^14.0.0",
-    "tailwindcss": "^3.3.0",
+    "prettier-plugin-astro": "^0.14.1",
     "terser": "^5.43.1",
     "vite-bundle-analyzer": "^0.7.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,astro}": [
+    "*.{js,jsx,astro}": [
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{json,md}": [
+    "*.{json,md,yml,yaml}": [
       "prettier --write"
     ]
   }

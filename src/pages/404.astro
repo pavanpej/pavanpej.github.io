@@ -1,56 +1,49 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Subheading from '../components/Subheading.astro';
-import Link from '../components/Link.astro';
+import MainLayout from "../layouts/MainLayout.astro"
+import Subheading from "../components/Subheading.astro"
+import Link from "../components/Link.astro"
 
-const currentUrl = Astro.url.pathname;
+const currentUrl = Astro.url.pathname
 ---
 
-<MainLayout 
-  title="404: Page Not Found | Pavan Rao"
+<MainLayout
+  title="404: Page Not Found"
   description="The page you're looking for doesn't exist. Let me help you find what you're looking for."
 >
   <Subheading title="404: Page Not Found" />
-  
+
   <section class="my-12">
     <div class="max-w-md">
       <p class="text-lg mb-6">
-        Oops! The page <code class="bg-rich-black px-2 py-1 rounded text-minion-yellow">{currentUrl}</code> doesn't exist.
+        Oops! The page <code
+          class="bg-rich-black px-2 py-1 rounded text-minion-yellow"
+          >{currentUrl}</code
+        > doesn't exist.
       </p>
-      
+
       <p class="mb-8">
         Here are some pages that might be what you're looking for:
       </p>
-      
+
       <ul class="space-y-3 mb-8">
         <li>
-          <Link href="/" arrow>
-            Home
-          </Link>
+          <Link href="/" arrow> Home </Link>
         </li>
         <li>
-          <Link href="/experiences" arrow>
-            Experiences
-          </Link>
+          <Link href="/experiences" arrow> Experiences </Link>
         </li>
         <li>
-          <Link href="/music" arrow>
-            Music
-          </Link>
+          <Link href="/music" arrow> Music </Link>
         </li>
         <li>
-          <Link href="/resume" arrow>
-            Resume
-          </Link>
+          <Link href="/resume" arrow> Resume </Link>
         </li>
       </ul>
-      
+
       <p class="text-subtext-gray text-sm">
-        If you think this is an error, feel free to 
-        <Link href="mailto:pavanpej@gmail.com" underline>
-          contact me
-        </Link>.
+        If you think this is an error, feel free to
+        <Link href="mailto:pavanpej@gmail.com" underline> contact me </Link>.
       </p>
     </div>
   </section>
-</MainLayout> 
+</MainLayout>

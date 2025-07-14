@@ -1,12 +1,6 @@
 ---
-export interface Props {
-  href: string;
-  faIcon?: string;
-  class?: string;
-}
-
-const { href, faIcon, class: className = "" } = Astro.props;
-const commonStyles = "hover:text-minion-yellow transition-all";
+const { href, faIcon, class: className = "" } = Astro.props
+const commonStyles = "hover:text-minion-yellow transition-all"
 ---
 
 <a
@@ -16,5 +10,5 @@ const commonStyles = "hover:text-minion-yellow transition-all";
   class={`${commonStyles} ${className}`}
 >
   <slot />
-  {faIcon && <i class={faIcon}></i>}
-</a> 
+  {faIcon && <i class={faIcon} />}
+</a>

@@ -1,4 +1,4 @@
-import { formatVisits, APP_CONSTANTS } from "../../utils"
+import { APP_CONSTANTS, formatVisits } from "../../utils"
 
 // Format categories for display
 const formatCategories = place => {
@@ -15,9 +15,16 @@ const InfoPanel = ({ place, onClose }) => {
 
   return (
     <div className="info-panel">
-      <div className="info-panel-content" role="dialog" aria-label={`Information about ${place.name}`}>
+      <div
+        className="info-panel-content"
+        role="dialog"
+        aria-label={`Information about ${place.name}`}
+      >
         <div className="info-panel-header">
-          <h3 className="text-lg font-bold text-minion-yellow" id={`panel-title-${place.id}`}>
+          <h3
+            className="text-lg font-bold text-minion-yellow"
+            id={`panel-title-${place.id}`}
+          >
             {place.name}
           </h3>
           <button
@@ -30,13 +37,18 @@ const InfoPanel = ({ place, onClose }) => {
             {/* × */}
           </button>
         </div>
-        
-        <div className="flex flex-col space-y-1 text-xs" role="region" aria-labelledby={`panel-title-${place.id}`}>
+
+        <div
+          className="flex flex-col space-y-1 text-xs"
+          role="region"
+          aria-labelledby={`panel-title-${place.id}`}
+        >
           <span className="text-gray-300">
             <span className="text-gray-400">State:</span> {place.state}
           </span>
           <span className="text-gray-300">
-            <span className="text-gray-400">Type:</span> {formatCategories(place)}
+            <span className="text-gray-400">Type:</span>{" "}
+            {formatCategories(place)}
           </span>
           <span className="text-gray-300">
             <span className="text-gray-400">Visited:</span>{" "}
@@ -52,4 +64,4 @@ const InfoPanel = ({ place, onClose }) => {
   )
 }
 
-export default InfoPanel 
+export default InfoPanel

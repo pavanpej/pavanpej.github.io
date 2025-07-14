@@ -1,4 +1,16 @@
-.cache
-package.json
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Static assets (don't format images, fonts, etc.)
+public/
+
+# Package files (auto-generated)
 package-lock.json
-public
+
+# Cache directories
+.cache
+.vite/

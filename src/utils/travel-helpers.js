@@ -41,7 +41,7 @@ export const formatVisits = visits => {
   }
 
   if (visits.length === 1) {
-    const visit = visits[0]
+    const [visit] = visits
     return visit.month ? `${visit.month} ${visit.year}` : visit.year
   }
 
@@ -55,9 +55,9 @@ export const processTravelData = placesData => {
   if (!Array.isArray(placesData)) return []
 
   return placesData
-    .map((place, index) => ({
+    .map(place => ({
       ...place,
-      id: `${place.name.toLowerCase().replace(/\s+/g, '-')}-${place.state.toLowerCase().replace(/\s+/g, '-')}`,
+      id: `${place.name.toLowerCase().replace(/\s+/g, "-")}-${place.state.toLowerCase().replace(/\s+/g, "-")}`,
     }))
     .sort((a, b) => {
       const dateA = getEarliestVisit(a.visits)

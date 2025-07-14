@@ -1,25 +1,44 @@
 module.exports = {
-  extends: [
-    'eslint:recommended',
+  // Base configuration
+  extends: ['eslint:recommended'],
+  plugins: ['astro', 'react', 'react-hooks'],
+  
+  // Files to ignore
+  ignorePatterns: [
+    'dist/',
+    '.astro/',
+    'node_modules/',
+    '*.min.js'
   ],
-  plugins: ['astro'],
+  
+  // Global environment settings
   env: {
+    browser: true,
     node: true,
     es2022: true,
-    browser: true,
   },
+  
+  // Default parser options for all files
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  
+  // Base rules for all files
   rules: {
+    // Variables and declarations
     'prefer-const': 'error',
     'no-unused-vars': 'error',
+    'no-var': 'error',
+    
+    // Code quality
     'no-console': 'warn',
     'no-debugger': 'error',
+    'no-duplicate-imports': 'error',
+    
+    // Modern JavaScript features
     'prefer-arrow-callback': 'error',
     'arrow-spacing': 'error',
-    'no-var': 'error',
     'object-shorthand': 'error',
     'prefer-template': 'error',
     'template-curly-spacing': 'error',
@@ -27,7 +46,8 @@ module.exports = {
       'array': true,
       'object': true
     }],
-    'no-duplicate-imports': 'error',
+    
+    // Import organization
     'sort-imports': ['error', {
       'ignoreCase': false,
       'ignoreDeclarationSort': true,
@@ -35,13 +55,15 @@ module.exports = {
       'memberSyntaxSortOrder': ['none', 'all', 'multiple', 'single']
     }]
   },
+  
+  // File-specific configurations
   overrides: [
+    // Astro files (.astro)
     {
       files: ['*.astro'],
       extends: ['plugin:astro/recommended'],
       parser: 'astro-eslint-parser',
       parserOptions: {
-        parser: '@typescript-eslint/parser',
         extraFileExtensions: ['.astro'],
       },
       rules: {
@@ -50,20 +72,24 @@ module.exports = {
         'astro/valid-compile': 'error'
       }
     },
-    {
-      files: ['*.ts', '*.tsx'],
-      parser: '@typescript-eslint/parser',
-      parserOptions: {
-        project: './tsconfig.json'
-      },
-      rules: {
-        'no-unused-vars': 'off', // TypeScript handles this
-      }
-    },
+    
+    // React files (.js, .jsx)
     {
       files: ['*.js', '*.jsx'],
-      env: {
-        node: true
+      extends: ['plugin:react/recommended', 'plugin:react-hooks/recommended'],
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        }
+      },
+      settings: {
+        react: {
+          version: 'detect'
+        }
+      },
+      rules: {
+        'react/prop-types': 'off',           // No TypeScript, so no prop validation
+        'react/react-in-jsx-scope': 'off'   // Not needed in modern React
       }
     }
   ]

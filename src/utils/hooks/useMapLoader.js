@@ -32,20 +32,29 @@ export const useMapLoader = () => {
           Popup,
         })
       } catch (err) {
-        // Log the actual error for debugging
-        console.error("Map loading error:", err)
-        
+        // Log the actual error for debugging in development
+        if (import.meta?.env?.DEV) {
+          // eslint-disable-next-line no-console
+          console.error("Map loading error:", err)
+        }
+
         // Provide more specific error messages
         let errorMessage = "Failed to load map. Please refresh the page."
-        
+
         if (err.message?.includes("leaflet")) {
-          errorMessage = "Failed to load map library. Please check your internet connection and refresh."
+          errorMessage =
+            "Failed to load map library. Please check your internet connection and refresh."
         } else if (err.message?.includes("react-leaflet")) {
-          errorMessage = "Failed to load map components. Please refresh the page."
-        } else if (err.message?.includes("network") || err.message?.includes("fetch")) {
-          errorMessage = "Network error loading map. Please check your internet connection."
+          errorMessage =
+            "Failed to load map components. Please refresh the page."
+        } else if (
+          err.message?.includes("network") ||
+          err.message?.includes("fetch")
+        ) {
+          errorMessage =
+            "Network error loading map. Please check your internet connection."
         }
-        
+
         setError(errorMessage)
       }
     }

@@ -11,7 +11,7 @@ export {
   getUniqueStates,
   getUniqueYears,
   countNationalParks,
-  groupPlacesByCategory
+  groupPlacesByCategory,
 } from "./travel-helpers"
 
 // Hooks

@@ -1,15 +1,15 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro"
 import Subheading from "../../components/Subheading.astro"
-import USAMap from "../../components/maps/USAMap.jsx"
+// import USAMap from "../../components/maps/USAMap.jsx"
 import USAMapWithErrorBoundary from "../../components/maps/USAMapWithErrorBoundary.jsx"
 import { visitedPlacesData } from "../../data"
 import {
   countNationalParks,
-  formatVisits,
+  // formatVisits,
   getUniqueStates,
   getUniqueYears,
-  groupPlacesByCategory,
+  // groupPlacesByCategory,
   processTravelData,
 } from "../../utils"
 
@@ -51,11 +51,11 @@ const allYears = getUniqueYears(visitedPlaces)
 const nationalParks = countNationalParks(visitedPlaces)
 
 // Group places by category for better organization
-const placesByCategory = groupPlacesByCategory(visitedPlaces)
+// const placesByCategory = groupPlacesByCategory(visitedPlaces)
 ---
 
 <MainLayout
-  title="Footprint in the USA | Pavan Rao"
+  title="Footprint in the USA"
   description="Explore the places I've visited across the United States - from bustling cities to natural wonders."
 >
   <Subheading title="Footprint in the USA" backLink="/experiences" />
@@ -64,9 +64,9 @@ const placesByCategory = groupPlacesByCategory(visitedPlaces)
     <p class="max-w-2xl text-lg mb-8">
       I've been fortunate to explore numerous incredible destinations across the
       United States since I moved there in 2023 for my Master's. From the
-      bustling streets of metropolitan cities like Boston, New York City, and San
-      Francisco to the serene landscapes of national parks across the country,
-      each destination has offered unique experiences and memories.
+      bustling streets of metropolitan cities like Boston, New York City, and
+      San Francisco to the serene landscapes of national parks across the
+      country, each destination has offered unique experiences and memories.
     </p>
   </section>
 

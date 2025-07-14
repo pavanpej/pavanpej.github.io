@@ -1,42 +1,36 @@
 ---
-import '../styles/global.css';
-import '@fontsource/fira-sans';
-import '@fontsource/glegoo';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'leaflet/dist/leaflet.css';
+import "../styles/global.css"
+import "@fontsource/fira-sans"
+import "@fontsource/glegoo"
+import "@fortawesome/fontawesome-free/css/all.min.css"
+import "leaflet/dist/leaflet.css"
 
-import Header from '../components/Header.astro';
+import Header from "../components/Header.astro"
 
-export interface Props {
-  title?: string;
-  description?: string;
-  image?: string;
-  canonical?: string;
-}
-
-const { 
-  title = "Pavan Rao", 
+const {
+  title = "Pavan Rao",
   description = "The personal website of Pavan Rao - SDE 2 at Infoblox, MSCS from Northeastern University, full stack software engineer interested in distributed systems, web, and cloud.",
   image = "/favicon.png",
-  canonical = Astro.url.href
-} = Astro.props;
+  canonical = Astro.url.href,
+} = Astro.props
 ---
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- Fonts are loaded via @fontsource imports -->
-    
+
     <!-- Primary Meta Tags -->
-    <title>{title}</title>
+    <title>{title} | pr.</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="author" content="Pavan Rao" />
+    <meta name="author" content="Pavan Ramachandra Rao" />
     <link rel="canonical" href={canonical} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
@@ -44,7 +38,7 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(image, Astro.url)} />
     <meta property="og:site_name" content="Pavan Rao" />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonical} />
@@ -52,113 +46,149 @@ const {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
     <meta property="twitter:creator" content="@pavanpej" />
-    
+
     <!-- Additional SEO -->
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#073b3a" />
-    
+
     <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Pavan Rao",
-      "jobTitle": "Software Engineer",
-      "alumniOf": "Northeastern University",
-      "knowsAbout": ["Distributed Systems", "Web Development", "Cloud Computing", "Kubernetes", "Go", "JavaScript"],
-      "url": "https://pavanpej.com",
-      "sameAs": [
-        "https://github.com/pavanpej",
-        "https://linkedin.com/in/pavanrrao",
-        "https://x.com/pavanpej"
-      ]
-    })} />
-    
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Pavan Rao",
+        jobTitle: "Software Engineer",
+        alumniOf: "Northeastern University",
+        knowsAbout: [
+          "Distributed Systems",
+          "Web Development",
+          "Cloud Computing",
+          "Kubernetes",
+          "Go",
+          "JavaScript",
+        ],
+        url: "https://pavanpej.com",
+        sameAs: [
+          "https://github.com/pavanpej",
+          "https://linkedin.com/in/pavanrrao",
+          "https://x.com/pavanpej",
+        ],
+      })}
+    />
+
     <!-- Performance optimizations -->
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="//basemaps.cartocdn.com">
-    
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="//basemaps.cartocdn.com" />
+
     <!-- Font optimization -->
     <style>
       /* Font display optimization */
       @font-face {
-        font-family: 'Fira Sans';
+        font-family: "Fira Sans";
         font-display: swap;
       }
       @font-face {
-        font-family: 'Glegoo';
+        font-family: "Glegoo";
         font-display: swap;
       }
     </style>
-    
+
     <script>
       // Mailgo configuration
-      (window as any).mailgoConfig = {
+      // @ts-ignore
+      window.mailgoConfig = {
         showFooter: false,
         showHeader: false,
-        dark: true
-      };
+        dark: true,
+      }
     </script>
-    <script src="https://unpkg.com/mailgo@0.12.2/dist/mailgo.dark.min.js"></script>
-    
+    <script src="https://unpkg.com/mailgo@0.12.2/dist/mailgo.dark.min.js"
+    ></script>
+
     <!-- Web Vitals tracking (production only) -->
     <script>
       // Initialize web vitals tracking only in production
-      (async function() {
+      (async function () {
         // Only track if window is available (client-side)
-        if (typeof window === 'undefined') {
-          return;
+        if (typeof window === "undefined") {
+          return
         }
 
         // Use a more reliable way to check if we're in production
-        const isProduction = window.location.hostname !== 'localhost' && 
-                            window.location.hostname !== '127.0.0.1' &&
-                            !window.location.hostname.includes('dev') &&
-                            !window.location.hostname.includes('.local');
+        const isProduction =
+          window.location.hostname !== "localhost" &&
+          window.location.hostname !== "127.0.0.1" &&
+          !window.location.hostname.includes("dev") &&
+          !window.location.hostname.includes(".local")
 
         if (!isProduction) {
-          return;
+          return
         }
 
         try {
           // Dynamically import web-vitals to avoid bundling in development
-          const { onCLS, onFID, onFCP, onLCP, onTTFB } = await import('web-vitals');
-          
+          const { onCLS, onFID, onFCP, onLCP, onTTFB } = await import(
+            "web-vitals"
+          )
+
           // Track Cumulative Layout Shift (CLS)
-          onCLS((metric) => {
-            console.log('CLS:', metric.value);
-            // You can send this to your analytics service here
-          });
+          onCLS(metric => {
+            // Send to analytics service in production
+            if (import.meta.env.DEV) {
+              // eslint-disable-next-line no-console
+              console.log("CLS:", metric.value)
+            }
+          })
 
           // Track First Input Delay (FID)
-          onFID((metric) => {
-            console.log('FID:', metric.value);
-          });
+          onFID(metric => {
+            if (import.meta.env.DEV) {
+              // eslint-disable-next-line no-console
+              console.log("FID:", metric.value)
+            }
+          })
 
           // Track First Contentful Paint (FCP)
-          onFCP((metric) => {
-            console.log('FCP:', metric.value);
-          });
+          onFCP(metric => {
+            if (import.meta.env.DEV) {
+              // eslint-disable-next-line no-console
+              console.log("FCP:", metric.value)
+            }
+          })
 
           // Track Largest Contentful Paint (LCP)
-          onLCP((metric) => {
-            console.log('LCP:', metric.value);
-          });
+          onLCP(metric => {
+            if (import.meta.env.DEV) {
+              // eslint-disable-next-line no-console
+              console.log("LCP:", metric.value)
+            }
+          })
 
           // Track Time to First Byte (TTFB)
-          onTTFB((metric) => {
-            console.log('TTFB:', metric.value);
-          });
+          onTTFB(metric => {
+            if (import.meta.env.DEV) {
+              // eslint-disable-next-line no-console
+              console.log("TTFB:", metric.value)
+            }
+          })
         } catch (error) {
           // Silently fail if web-vitals can't be loaded
-          console.warn('Web Vitals tracking not available:', error);
+          if (import.meta.env.DEV) {
+            // eslint-disable-next-line no-console
+            console.warn("Web Vitals tracking not available:", error)
+          }
         }
-      })();
+      })()
     </script>
-    
+
     <slot name="head" />
   </head>
   <body class="font-sans bg-rich-black text-white min-h-screen">
-    <div class="bg-rich-black bg-pattern-topography text-white font-sans min-h-screen h-full min-w-full pb-32">
+    <div
+      class="bg-rich-black bg-pattern-topography text-white font-sans min-h-screen h-full min-w-full pb-32"
+    >
       {/* highlight bar */}
       <div class="bg-minion-yellow h-2.5 mb-24" id="highlight-bar"></div>
       {/* get some good horizontal margins */}
@@ -176,4 +206,4 @@ const {
       </div>
     </div>
   </body>
-</html> 
+</html>

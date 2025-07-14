@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 6 * * 1' # Weekly on Mondays at 6 AM UTC
+    - cron: "0 6 * * 1" # Weekly on Mondays at 6 AM UTC
   workflow_dispatch:
 
 jobs:
@@ -15,20 +15,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'
-          cache: 'npm'
-      
+          node-version: "24"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run npm audit
         run: npm audit --audit-level=moderate
         continue-on-error: true
-      
+
       - name: Run npm audit (strict)
         id: audit-strict
         run: |
@@ -40,13 +40,13 @@ jobs:
             npm audit --audit-level=high
             exit 1
           fi
-      
+
       - name: Check for security advisories
         run: |
           echo "Checking for security advisories in package.json..."
           npx audit-ci --moderate
         continue-on-error: true
-      
+
       - name: Generate security report
         if: always()
         run: |
@@ -58,7 +58,7 @@ jobs:
           if [ -f audit-results.json ]; then
             echo "Audit completed. Check artifacts for detailed results."
           fi
-      
+
       - name: Upload security report
         if: always()
         uses: actions/upload-artifact@v4
@@ -67,4 +67,4 @@ jobs:
           path: |
             security-report.md
             audit-results.json
-          retention-days: 30 
+          retention-days: 30

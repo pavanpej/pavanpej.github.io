@@ -14,6 +14,7 @@ class ErrorBoundary extends Component {
 
   componentDidCatch(error, errorInfo) {
     // Log error to console for debugging
+    // eslint-disable-next-line no-console
     console.error("ErrorBoundary caught an error:", error, errorInfo)
 
     // Could also log to an error reporting service here
@@ -21,7 +22,7 @@ class ErrorBoundary extends Component {
 
     this.setState({
       error,
-      errorInfo
+      errorInfo,
     })
   }
 
@@ -33,8 +34,10 @@ class ErrorBoundary extends Component {
     if (this.state.hasError) {
       // Custom fallback UI
       return (
-        <div className="w-full rounded-lg overflow-hidden relative bg-rich-black flex items-center justify-center border border-vivid-blue/20"
-          style={{ height: this.props.height || APP_CONSTANTS.MAP_HEIGHT }}>
+        <div
+          className="w-full rounded-lg overflow-hidden relative bg-rich-black flex items-center justify-center border border-vivid-blue/20"
+          style={{ height: this.props.height || APP_CONSTANTS.MAP_HEIGHT }}
+        >
           <div className="text-center w-full max-w-md px-4 sm:px-6">
             <div className="mb-4">
               <i className="fas fa-exclamation-triangle text-xl text-red-400"></i>
@@ -45,7 +48,8 @@ class ErrorBoundary extends Component {
                 Something went wrong
               </h3>
               <p className="text-gray-400 text-sm">
-                The component encountered an error. You can try again or refresh the page.
+                The component encountered an error. You can try again or refresh
+                the page.
               </p>
             </div>
 
@@ -59,7 +63,7 @@ class ErrorBoundary extends Component {
             </div>
 
             {/* Development error details */}
-            {process.env.NODE_ENV === 'development' && this.state.error && (
+            {process.env.NODE_ENV === "development" && this.state.error && (
               <details className="text-xs">
                 <summary className="cursor-pointer hover:text-gray-300 text-gray-500 mt-3">
                   Error Details
@@ -79,4 +83,4 @@ class ErrorBoundary extends Component {
   }
 }
 
-export default ErrorBoundary 
+export default ErrorBoundary

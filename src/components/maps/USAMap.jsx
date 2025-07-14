@@ -1,10 +1,10 @@
-import { useState, useMemo, useRef, useEffect } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
+  APP_CONSTANTS,
   MAP_CONFIG,
+  countNationalParks,
   createMapBounds,
   getUniqueStates,
-  countNationalParks,
-  APP_CONSTANTS,
   useMapLoader,
 } from "../../utils"
 import InfoPanel from "./InfoPanel"
@@ -34,7 +34,8 @@ const ErrorState = ({ error }) => (
           The map failed to load.
         </h3>
         <p className="text-gray-400 text-sm">
-          {error || "An error occurred while loading the map. You can try again or refresh the page."}
+          {error ||
+            "An error occurred while loading the map. You can try again or refresh the page."}
         </p>
       </div>
       <div className="mb-4">
@@ -48,8 +49,6 @@ const ErrorState = ({ error }) => (
     </div>
   </div>
 )
-
-
 
 /**
  * Interactive USA travel map component
@@ -70,7 +69,6 @@ const ErrorState = ({ error }) => (
 const USAMap = ({ places }) => {
   const [selectedPlace, setSelectedPlace] = useState(null)
   const [visibleMarkers, setVisibleMarkers] = useState(places)
-  const [mapZoom, setMapZoom] = useState(MAP_CONFIG.zoom.default)
   const mapRef = useRef(null)
   const { isClient, mapComponents, error } = useMapLoader()
 
@@ -80,20 +78,25 @@ const USAMap = ({ places }) => {
       return {
         bounds: null,
         visitedStates: getUniqueStates(places),
-        nationalParks: countNationalParks(places)
+        nationalParks: countNationalParks(places),
       }
     }
     return {
       bounds: createMapBounds(mapComponents.L),
       visitedStates: getUniqueStates(places),
-      nationalParks: countNationalParks(places)
+      nationalParks: countNationalParks(places),
     }
   }, [mapComponents?.L, places])
 
   const { bounds: usaBounds, visitedStates, nationalParks } = mapStats
 
   // Helper function to create marker icons
-  const createMarkerIcon = (L, backgroundColor, borderColor, className = "custom-marker") => {
+  const createMarkerIcon = (
+    L,
+    backgroundColor,
+    borderColor,
+    className = "custom-marker",
+  ) => {
     return L.divIcon({
       className,
       html: `<div style="
@@ -117,32 +120,32 @@ const USAMap = ({ places }) => {
   // Memoize the custom marker icons
   const markerIcons = useMemo(() => {
     if (!mapComponents?.L) return { default: null, selected: null }
-    
+
     return {
       default: createMarkerIcon(
         mapComponents.L,
         APP_CONSTANTS.COLORS.VIVID_BLUE,
         APP_CONSTANTS.COLORS.COMPLIMENT_VIVID_BLUE,
-        "custom-marker"
+        "custom-marker",
       ),
       selected: createMarkerIcon(
         mapComponents.L,
         APP_CONSTANTS.COLORS.MINION_YELLOW,
         APP_CONSTANTS.COLORS.VIVID_BLUE,
-        "custom-marker selected"
-      )
+        "custom-marker selected",
+      ),
     }
   }, [mapComponents?.L])
 
   // Helper to filter visible markers based on map bounds
-  const filterVisibleMarkers = (map, allPlaces) => {
+  const filterVisibleMarkers = useCallback((map, allPlaces) => {
     if (!map) return allPlaces
     const bounds = map.getBounds()
     return allPlaces.filter(place => {
       const [lat, lng] = place.coordinates
       return bounds.contains([lat, lng])
     })
-  }
+  }, [])
 
   // Update visible markers on map move/zoom
   useEffect(() => {
@@ -150,15 +153,14 @@ const USAMap = ({ places }) => {
     const map = mapRef.current
     const updateMarkers = () => {
       setVisibleMarkers(filterVisibleMarkers(map, places))
-      setMapZoom(map.getZoom())
     }
-    map.on('moveend', updateMarkers)
-    map.on('zoomend', updateMarkers)
+    map.on("moveend", updateMarkers)
+    map.on("zoomend", updateMarkers)
     // Initial update
     updateMarkers()
     return () => {
-      map.off('moveend', updateMarkers)
-      map.off('zoomend', updateMarkers)
+      map.off("moveend", updateMarkers)
+      map.off("zoomend", updateMarkers)
     }
   }, [places, filterVisibleMarkers, mapComponents])
 
@@ -186,7 +188,7 @@ const USAMap = ({ places }) => {
     return <LoadingState />
   }
 
-  const { L, MapContainer, TileLayer, Marker } = mapComponents
+  const { MapContainer, TileLayer, Marker } = mapComponents
 
   return (
     <div
@@ -199,15 +201,23 @@ const USAMap = ({ places }) => {
           <div className="text-center max-w-md">
             <div className="text-minion-yellow mb-4">
               <i className="fas fa-map text-2xl mb-2" aria-hidden="true"></i>
-              <p className="text-sm font-medium">Interactive map requires JavaScript</p>
+              <p className="text-sm font-medium">
+                Interactive map requires JavaScript
+              </p>
             </div>
             <p className="text-xs text-gray-400 mb-4">
-              Here's a summary of visited places:
+              Here&apos;s a summary of visited places:
             </p>
             <div className="text-xs text-gray-300 space-y-1">
-              <p><strong>States visited:</strong> {visitedStates.length}</p>
-              <p><strong>Places visited:</strong> {places.length}</p>
-              <p><strong>National parks:</strong> {nationalParks}</p>
+              <p>
+                <strong>States visited:</strong> {visitedStates.length}
+              </p>
+              <p>
+                <strong>Places visited:</strong> {places.length}
+              </p>
+              <p>
+                <strong>National parks:</strong> {nationalParks}
+              </p>
             </div>
           </div>
         </div>
@@ -226,7 +236,9 @@ const USAMap = ({ places }) => {
         aria-label="Interactive map of visited places in the United States"
         role="application"
         tabIndex={0}
-        whenCreated={mapInstance => { mapRef.current = mapInstance }}
+        whenCreated={mapInstance => {
+          mapRef.current = mapInstance
+        }}
       >
         {/* Base map tiles */}
         <TileLayer
@@ -245,7 +257,9 @@ const USAMap = ({ places }) => {
               icon={icon}
               eventHandlers={{
                 click: () => {
-                  setSelectedPlace(selectedPlace?.id === place.id ? null : place)
+                  setSelectedPlace(
+                    selectedPlace?.id === place.id ? null : place,
+                  )
                 },
               }}
               aria-label={`${place.name}, ${place.state} - Click to view details`}
@@ -253,12 +267,8 @@ const USAMap = ({ places }) => {
           )
         })}
       </MapContainer>
-      
-      {/* Fixed Info Panel */}
-      <InfoPanel 
-        place={selectedPlace} 
-        onClose={() => setSelectedPlace(null)} 
-      />
+
+      <InfoPanel place={selectedPlace} onClose={() => setSelectedPlace(null)} />
     </div>
   )
 }

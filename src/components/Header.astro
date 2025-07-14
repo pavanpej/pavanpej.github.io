@@ -1,17 +1,19 @@
 ---
-import Link from './Link.astro';
+import Link from "./Link.astro"
 
-export interface Props {
-  brand?: string;
-}
-
-const { brand = "pr." } = Astro.props;
+const { brand = "pr." } = Astro.props
 ---
 
 <header>
   <div class="mb-6" id="brand">
-    <h1 class="font-brand text-minion-yellow text-6xl font-bold" aria-label="website brand">
-      <Link href="/" class="text-minion-yellow hover:text-white !text-minion-yellow">
+    <h1
+      class="font-brand text-minion-yellow text-6xl font-bold"
+      aria-label="website brand"
+    >
+      <Link
+        href="/"
+        class="text-minion-yellow hover:text-white !text-minion-yellow"
+      >
         {brand}
       </Link>
     </h1>
@@ -22,4 +24,4 @@ const { brand = "pr." } = Astro.props;
   <div class="my-12" id="separator">
     <span class="text-minion-yellow text-3xl">. . .</span>
   </div>
-</header> 
+</header>
