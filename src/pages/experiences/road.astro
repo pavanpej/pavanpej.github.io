@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro"
 import Subheading from "../../components/Subheading.astro"
+import ImageViewer from "../../components/ImageViewer.astro"
 import { roadTripData } from "../../data/road-trip-data"
 
 const assetUrlPrefix = "/assets/experiences"
@@ -35,10 +36,10 @@ const assetUrlPrefix = "/assets/experiences"
         </p>
         <p class="max-w-md mb-4">{item.description}</p>
         {item.image && (
-          <img
+          <ImageViewer
             src={`${assetUrlPrefix}/${item.image}`}
             alt={`${item.title} - ${item.location}`}
-            class="max-w-md rounded-lg shadow-lg"
+            class="max-w-lg rounded-lg shadow-lg w-full sm:w-auto"
             loading="lazy"
             width="400"
             height="300"

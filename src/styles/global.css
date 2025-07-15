@@ -1,6 +1,7 @@
 /* Import custom color properties */
 @import './colors.css';
 @import './map.css';
+@import './image-viewer.css';
 
 @tailwind base;
 @tailwind components;
