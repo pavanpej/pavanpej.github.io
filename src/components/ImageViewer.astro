@@ -1,0 +1,257 @@
+---
+const {
+  src,
+  alt,
+  class: className = "",
+  width = "400",
+  height = "300",
+  loading = "lazy",
+  decoding = "async",
+} = Astro.props
+---
+
+<div class="image-viewer-wrapper">
+  <img
+    src={src}
+    alt={alt}
+    class={`image-viewer-trigger cursor-pointer transition-transform hover:scale-105 ${className}`}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding={decoding}
+    data-src={src}
+    data-alt={alt}
+  />
+</div>
+
+<!-- Modal overlay (hidden by default) -->
+<div
+  id="image-modal"
+  class="image-modal hidden fixed inset-0 bg-rich-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image viewer"
+>
+  <div class="image-modal-content relative max-w-full max-h-full">
+    <!-- Close button -->
+    <button
+      class="image-modal-close absolute top-4 right-4 bg-rich-black bg-opacity-75 text-gray-200 hover:text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors z-10 focus:outline-none"
+      aria-label="Close image viewer"
+    >
+      <i class="fas fa-times text-lg" aria-hidden="true"></i>
+    </button>
+
+    <!-- Navigation arrows -->
+    <button
+      id="prev-button"
+      class="image-nav-button image-nav-prev fixed left-4 top-1/2 transform -translate-y-1/2 bg-rich-black bg-opacity-75 text-gray-200 hover:text-white rounded-full w-12 h-12 flex items-center justify-center transition-opacity z-10 focus:outline-none opacity-0 pointer-events-none"
+      aria-label="Previous image"
+    >
+      <i class="fas fa-chevron-left text-lg" aria-hidden="true"></i>
+    </button>
+
+    <button
+      id="next-button"
+      class="image-nav-button image-nav-next fixed right-4 top-1/2 transform -translate-y-1/2 bg-rich-black bg-opacity-75 text-gray-200 hover:text-white rounded-full w-12 h-12 flex items-center justify-center transition-opacity z-10 focus:outline-none opacity-0 pointer-events-none"
+      aria-label="Next image"
+    >
+      <i class="fas fa-chevron-right text-lg" aria-hidden="true"></i>
+    </button>
+
+    <!-- Image container -->
+    <div class="image-modal-image-container">
+      <img
+        id="modal-image"
+        class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+        alt=""
+        src=""
+      />
+    </div>
+
+    <!-- Image caption -->
+    <div class="image-modal-caption mt-4 text-center">
+      <p
+        id="modal-caption"
+        class="text-white text-sm bg-rich-black bg-opacity-75 rounded px-3 py-2 inline-block"
+      >
+      </p>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("image-modal")
+    const modalImage = document.getElementById("modal-image")
+    const modalCaption = document.getElementById("modal-caption")
+    const closeButton = modal && modal.querySelector(".image-modal-close")
+    const prevButton = document.getElementById("prev-button")
+    const nextButton = document.getElementById("next-button")
+
+    let currentImageIndex = 0
+    let allImages = []
+
+    // Get all image viewer triggers on the page
+    const updateImageList = () => {
+      allImages = Array.from(document.querySelectorAll(".image-viewer-trigger"))
+    }
+
+    // Show/hide navigation buttons based on image count
+    const updateNavButtons = () => {
+      if (allImages.length > 1) {
+        if (prevButton) {
+          prevButton.classList.remove("opacity-0", "pointer-events-none")
+          prevButton.classList.add("opacity-100", "pointer-events-auto")
+        }
+        if (nextButton) {
+          nextButton.classList.remove("opacity-0", "pointer-events-none")
+          nextButton.classList.add("opacity-100", "pointer-events-auto")
+        }
+      } else {
+        if (prevButton) {
+          prevButton.classList.add("opacity-0", "pointer-events-none")
+          prevButton.classList.remove("opacity-100", "pointer-events-auto")
+        }
+        if (nextButton) {
+          nextButton.classList.add("opacity-0", "pointer-events-none")
+          nextButton.classList.remove("opacity-100", "pointer-events-auto")
+        }
+      }
+    }
+
+    // Load image by index
+    const loadImageByIndex = index => {
+      if (
+        index < 0 ||
+        index >= allImages.length ||
+        !modalImage ||
+        !modalCaption
+      )
+        return
+
+      const img = allImages[index]
+      const src = img.getAttribute("data-src")
+      const alt = img.getAttribute("data-alt")
+
+      if (src && alt) {
+        modalImage.src = src
+        modalImage.alt = alt
+        modalCaption.textContent = alt
+        currentImageIndex = index
+      }
+    }
+
+    // Navigate to previous image
+    const showPrevImage = () => {
+      const newIndex =
+        currentImageIndex > 0 ? currentImageIndex - 1 : allImages.length - 1
+      loadImageByIndex(newIndex)
+    }
+
+    // Navigate to next image
+    const showNextImage = () => {
+      const newIndex =
+        currentImageIndex < allImages.length - 1 ? currentImageIndex + 1 : 0
+      loadImageByIndex(newIndex)
+    }
+
+    // Handle image clicks
+    document.addEventListener("click", e => {
+      const { target } = e
+      if (
+        target &&
+        target.classList &&
+        target.classList.contains("image-viewer-trigger")
+      ) {
+        e.preventDefault()
+
+        // Update image list and find current image index
+        updateImageList()
+        currentImageIndex = allImages.findIndex(img => img === target)
+
+        const src = target.getAttribute("data-src")
+        const alt = target.getAttribute("data-alt")
+
+        if (src && alt && modal && modalImage && modalCaption) {
+          modalImage.src = src
+          modalImage.alt = alt
+          modalCaption.textContent = alt
+          modal.classList.remove("hidden")
+          modal.classList.add("flex")
+
+          // Update navigation buttons
+          updateNavButtons()
+
+          // Focus management
+          if (closeButton && typeof closeButton.focus === "function") {
+            closeButton.focus()
+          }
+
+          // Prevent body scroll
+          document.body.style.overflow = "hidden"
+        }
+      }
+    })
+
+    // Close modal function
+    const closeModal = () => {
+      if (modal) {
+        modal.classList.add("hidden")
+        modal.classList.remove("flex")
+        document.body.style.overflow = ""
+
+        // Return focus to the current trigger element
+        if (
+          allImages[currentImageIndex] &&
+          typeof allImages[currentImageIndex].focus === "function"
+        ) {
+          allImages[currentImageIndex].focus()
+        }
+      }
+    }
+
+    // Navigation button clicks
+    if (prevButton) {
+      prevButton.addEventListener("click", e => {
+        e.stopPropagation()
+        showPrevImage()
+      })
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener("click", e => {
+        e.stopPropagation()
+        showNextImage()
+      })
+    }
+
+    // Close button click
+    if (closeButton) {
+      closeButton.addEventListener("click", closeModal)
+    }
+
+    // Click outside to close
+    if (modal) {
+      modal.addEventListener("click", e => {
+        if (e.target === modal) {
+          closeModal()
+        }
+      })
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", e => {
+      if (modal && !modal.classList.contains("hidden")) {
+        if (e.key === "Escape") {
+          closeModal()
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault()
+          showPrevImage()
+        } else if (e.key === "ArrowRight") {
+          e.preventDefault()
+          showNextImage()
+        }
+      }
+    })
+  })
+</script>
