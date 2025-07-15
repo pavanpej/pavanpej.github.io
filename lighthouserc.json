@@ -1,7 +1,14 @@
 {
   "ci": {
     "collect": {
-      "url": ["https://pavanpej.com", "https://pavanpej.com/about"],
+      "url": [
+        "https://pavanpej.com",
+        "https://pavanpej.com/experiences",
+        "https://pavanpej.com/experiences/road",
+        "https://pavanpej.com/experiences/usa",
+        "https://pavanpej.com/music",
+        "https://pavanpej.com/resume"
+      ],
       "numberOfRuns": 3,
       "startServerCommand": "",
       "startServerReadyPattern": "",
