@@ -42,12 +42,12 @@
     "analyze": "npm run build && npx vite-bundle-analyzer dist/assets"
   },
   "dependencies": {
-    "astro": "^4.0.0",
-    "@astrojs/react": "^3.0.0",
+    "@astrojs/react": "^4.4.2",
     "@astrojs/tailwind": "^6.0.2",
     "@fontsource/fira-sans": "^5.0.0",
     "@fontsource/glegoo": "^5.0.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
+    "astro": "^5.18.0",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -71,6 +71,9 @@
     "prettier-plugin-astro": "^0.14.1",
     "terser": "^5.43.1",
     "vite-bundle-analyzer": "^0.7.0"
+  },
+  "overrides": {
+    "volar-service-yaml": "0.0.70"
   },
   "lint-staged": {
     "*.{js,jsx,astro}": [
