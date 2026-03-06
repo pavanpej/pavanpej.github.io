@@ -11,6 +11,8 @@ on:
 
 jobs:
   lighthouse:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     # Only run on successful deployments or manual dispatch
     if: github.event.deployment_status.state == 'success' || github.event_name == 'workflow_dispatch'
