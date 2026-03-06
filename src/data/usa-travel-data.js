@@ -1,3 +1,6 @@
+// Last updated date for the map data (update this when adding new places)
+export const mapDataLastUpdated = "2026-02-28"
+
 // Visited places data (no need to add IDs manually)
 export const visitedPlacesData = [
   {
