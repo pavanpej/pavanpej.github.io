@@ -1,5 +1,8 @@
 name: Build and Check Astro Website
 
+permissions:
+  contents: read
+
 on:
   pull_request:
     branches:
