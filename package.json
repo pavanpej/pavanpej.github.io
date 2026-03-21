@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
+    "@astrojs/sitemap": "^3.7.1",
     "@astrojs/tailwind": "^6.0.2",
     "@fontsource/fira-sans": "^5.0.0",
     "@fontsource/glegoo": "^5.0.0",

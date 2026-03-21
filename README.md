@@ -57,7 +57,12 @@ Open [http://localhost:4321](http://localhost:4321) in your browser.
 
 ## Deployment
 
-Automatically deployed to GitHub Pages via GitHub Actions on every push to the `main` branch.
+Automatically deployed to GitHub Pages via GitHub Actions on every push to the `main` branch. The deploy workflow runs ESLint, Prettier, and `astro check` before building.
+
+## SEO
+
+- **`public/robots.txt`** — allows crawlers and points to the sitemap.
+- **`@astrojs/sitemap`** — emits `sitemap-index.xml` and `sitemap-0.xml` in the build output.
 
 ---
 
