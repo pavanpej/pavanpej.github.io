@@ -1,0 +1,238 @@
+---
+/**
+ * Desktop: fixed right rail; active item gets a vertical bar outside the label alignment.
+ * Mobile: full-screen opaque overlay (matches page bg); active = yellow only, no underline.
+ */
+interface Props {
+  pathname: string
+}
+
+const { pathname } = Astro.props
+const normalized = pathname.replace(/\/$/, "") || "/"
+
+type NavKey = "home" | "music" | "experiences" | "career"
+
+function isActive(key: NavKey): boolean {
+  if (key === "home") return normalized === "/"
+  if (key === "music")
+    return normalized === "/music" || normalized.startsWith("/music/")
+  if (key === "experiences") return normalized.startsWith("/experiences")
+  if (key === "career")
+    return normalized === "/career" || normalized.startsWith("/career/")
+  return false
+}
+
+const allItems: {
+  key: NavKey
+  href: string
+  label: string
+  show: boolean
+}[] = [
+  { key: "home", href: "/", label: "home", show: true },
+  { key: "music", href: "/music", label: "music", show: true },
+  {
+    key: "experiences",
+    href: "/experiences",
+    label: "experiences",
+    show: true,
+  },
+  { key: "career", href: "/career", label: "career", show: true },
+]
+
+const items = allItems.filter(i => i.show)
+
+const transition =
+  "transition-[color,opacity,transform] duration-300 ease-out motion-reduce:transition-none"
+const focusRing =
+  "focus:outline-none focus-visible:ring-2 focus-visible:ring-minion-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-rich-black rounded-sm"
+const typeScaleMobile = "text-2xl sm:text-3xl font-bold"
+/** Between body (~base) and page subheadings (~3xl): readable without dominating the layout */
+const typeScaleDesktop = "text-lg xl:text-xl font-semibold"
+/** Muted nav links: subtext-gray reads better on rich-black than copyright-gray */
+const navMuted = "text-subtext-gray hover:text-white"
+---
+
+<nav class="site-nav" aria-label="Site" data-nav-root>
+  <!-- Mobile: one control — same position open/closed (bars ↔ times) -->
+  <button
+    type="button"
+    id="site-nav-toggle"
+    class="site-nav__toggle md:hidden fixed top-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-md border border-copyright-gray/50 bg-rich-black text-minion-yellow shadow-lg transition-[color,border-color,transform] duration-300 ease-out hover:border-minion-yellow/60 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-minion-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-rich-black motion-reduce:transition-none"
+    aria-expanded="false"
+    aria-controls="site-nav-overlay"
+    aria-label="Open menu"
+  >
+    <i class="fas fa-bars text-lg" aria-hidden="true"></i>
+  </button>
+
+  <!-- Mobile: opaque panel + same topography as main shell for continuity -->
+  <div
+    id="site-nav-overlay"
+    class="site-nav__overlay md:hidden fixed inset-0 z-[60] flex flex-col bg-rich-black bg-pattern-topography opacity-0 pointer-events-none transition-opacity duration-200 ease-out motion-reduce:transition-none"
+    aria-hidden="true"
+  >
+    <ul
+      class={`flex flex-1 flex-col justify-center items-center gap-1 px-8 pb-16 pt-20 ${typeScaleMobile}`}
+    >
+      {
+        items.map(({ key, href, label }) => {
+          const active = isActive(key)
+          return (
+            <li class="w-full max-w-md">
+              <a
+                href={href}
+                class:list={[
+                  "block w-full py-3 text-center",
+                  transition,
+                  focusRing,
+                  active ? "text-minion-yellow" : navMuted,
+                ]}
+                aria-current={active ? "page" : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </div>
+
+  <!-- Desktop: bar sits in a fixed-width column past the label edge so text alignment never shifts -->
+  <div
+    class="site-nav__desktop hidden md:flex fixed right-6 lg:right-10 xl:right-14 top-[42%] -translate-y-1/2 z-40 flex-col items-end"
+  >
+    <ul class="flex flex-col items-end gap-0.5">
+      {
+        items.map(({ key, href, label }) => {
+          const active = isActive(key)
+          return (
+            <li class="group flex items-center justify-end gap-2">
+              <a
+                href={href}
+                class:list={[
+                  "max-w-[min(100vw,16rem)] text-right leading-tight",
+                  typeScaleDesktop,
+                  transition,
+                  focusRing,
+                  "py-1.5",
+                  active ? "text-minion-yellow" : navMuted,
+                ]}
+                aria-current={active ? "page" : undefined}
+              >
+                {label}
+              </a>
+              <span
+                class="inline-flex h-[1.35em] w-2 shrink-0 items-center justify-center"
+                aria-hidden="true"
+              >
+                <span
+                  class:list={[
+                    "site-nav-indicator block shrink-0 origin-center motion-reduce:transition-none",
+                    active
+                      ? "site-nav-indicator--active bg-minion-yellow opacity-100"
+                      : "h-1.5 w-1.5 rounded-full bg-subtext-gray/40 opacity-0 transition-[opacity,background-color] duration-300 ease-out group-hover:opacity-100 group-hover:bg-subtext-gray/55 group-focus-within:opacity-100 group-focus-within:bg-subtext-gray/55",
+                  ]}
+                />
+              </span>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </div>
+</nav>
+
+<style is:global>
+  /* Current page only: morph dot → bar on mount. Inactive rows stay a dot on hover (no shape change). */
+  @keyframes site-nav-indicator-expand {
+    0% {
+      width: 0.375rem;
+      height: 0.375rem;
+      border-radius: 9999px;
+    }
+    100% {
+      width: 0.125rem;
+      height: 1.12em;
+      border-radius: 0.125rem;
+    }
+  }
+
+  .site-nav__desktop .site-nav-indicator--active {
+    animation: site-nav-indicator-expand 0.38s ease-out both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-nav__desktop .site-nav-indicator--active {
+      animation: none;
+      width: 0.125rem;
+      height: 1.12em;
+      border-radius: 0.125rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  function initSiteNav() {
+    const overlay = document.getElementById("site-nav-overlay")
+    const toggle = document.getElementById("site-nav-toggle")
+    if (!overlay || !toggle) return
+    if (toggle.dataset.siteNavBound === "1") return
+    toggle.dataset.siteNavBound = "1"
+
+    const mq = window.matchMedia("(min-width: 768px)")
+
+    function setOpen(open) {
+      if (mq.matches) return
+      overlay.classList.toggle("opacity-0", !open)
+      overlay.classList.toggle("pointer-events-none", !open)
+      overlay.setAttribute("aria-hidden", open ? "false" : "true")
+      toggle.setAttribute("aria-expanded", open ? "true" : "false")
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu")
+      toggle.style.zIndex = open ? "70" : ""
+      const icon = toggle.querySelector("i")
+      if (icon) {
+        if (open) {
+          icon.classList.remove("fa-bars", "text-lg")
+          icon.classList.add("fa-times", "text-xl")
+        } else {
+          icon.classList.remove("fa-times", "text-xl")
+          icon.classList.add("fa-bars", "text-lg")
+        }
+      }
+      document.body.style.overflow = open ? "hidden" : ""
+    }
+
+    function close() {
+      setOpen(false)
+    }
+
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true"
+      setOpen(!isOpen)
+    })
+
+    overlay.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", close)
+    })
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") close()
+    })
+
+    mq.addEventListener("change", () => {
+      if (mq.matches) close()
+    })
+  }
+
+  function boot() {
+    initSiteNav()
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot)
+  } else {
+    boot()
+  }
+  document.addEventListener("astro:page-load", boot)
+</script>

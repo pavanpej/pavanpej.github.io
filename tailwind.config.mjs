@@ -13,8 +13,8 @@ export default {
         "subtext-gray": "#adadad",
       },
       fontFamily: {
-        sans: ['"Fira Sans"', ...defaultTheme.fontFamily.sans],
-        brand: ['Glegoo', ...defaultTheme.fontFamily.sans],
+        sans: ['"Fira Sans"', '"Fira Sans Fallback"', ...defaultTheme.fontFamily.sans],
+        brand: ['Glegoo', '"Glegoo Fallback"', ...defaultTheme.fontFamily.sans],
       },
     },
   },
