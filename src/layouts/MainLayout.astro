@@ -207,6 +207,7 @@ const {
 
     <!-- ImageViewer: in layout so it runs on first load; works with ClientRouter content swaps -->
     <script is:inline>
+      // eslint-disable-next-line no-extra-semi -- leading semicolon prevents ASI when scripts concatenate; Prettier adds it
       ;(function () {
         let currentImageIndex = 0
         let allImages = []
