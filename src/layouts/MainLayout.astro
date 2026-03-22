@@ -207,7 +207,7 @@ const {
 
     <!-- ImageViewer: in layout so it runs on first load; works with ClientRouter content swaps -->
     <script is:inline>
-      (function () {
+      ;(function () {
         let currentImageIndex = 0
         let allImages = []
 
@@ -223,7 +223,9 @@ const {
         }
 
         function updateImageList() {
-          allImages = Array.from(document.querySelectorAll(".image-viewer-trigger"))
+          allImages = Array.from(
+            document.querySelectorAll(".image-viewer-trigger"),
+          )
         }
 
         function updateNavButtons(prevBtn, nextBtn) {
@@ -249,7 +251,13 @@ const {
         }
 
         function loadImageByIndex(index, el) {
-          if (index < 0 || index >= allImages.length || !el.modalImage || !el.modalCaption) return
+          if (
+            index < 0 ||
+            index >= allImages.length ||
+            !el.modalImage ||
+            !el.modalCaption
+          )
+            return
           const img = allImages[index]
           const src = img.getAttribute("data-src")
           const alt = img.getAttribute("data-alt")
@@ -263,13 +271,15 @@ const {
 
         function showPrevImage() {
           const el = getElements()
-          const newIndex = currentImageIndex > 0 ? currentImageIndex - 1 : allImages.length - 1
+          const newIndex =
+            currentImageIndex > 0 ? currentImageIndex - 1 : allImages.length - 1
           loadImageByIndex(newIndex, el)
         }
 
         function showNextImage() {
           const el = getElements()
-          const newIndex = currentImageIndex < allImages.length - 1 ? currentImageIndex + 1 : 0
+          const newIndex =
+            currentImageIndex < allImages.length - 1 ? currentImageIndex + 1 : 0
           loadImageByIndex(newIndex, el)
         }
 
@@ -279,19 +289,28 @@ const {
             el.modal.classList.add("hidden")
             el.modal.classList.remove("flex")
             document.body.style.overflow = ""
-            if (allImages[currentImageIndex] && typeof allImages[currentImageIndex].focus === "function") {
+            if (
+              allImages[currentImageIndex] &&
+              typeof allImages[currentImageIndex].focus === "function"
+            ) {
               allImages[currentImageIndex].focus()
             }
           }
         }
 
         function handleDocumentClick(e) {
-          const {target} = e
+          const { target } = e
           const el = getElements()
-          if (target && target.classList && target.classList.contains("image-viewer-trigger")) {
+          if (
+            target &&
+            target.classList &&
+            target.classList.contains("image-viewer-trigger")
+          ) {
             e.preventDefault()
             updateImageList()
-            currentImageIndex = allImages.findIndex((img) => { return img === target })
+            currentImageIndex = allImages.findIndex(img => {
+              return img === target
+            })
             const src = target.getAttribute("data-src")
             const alt = target.getAttribute("data-alt")
             if (src && alt && el.modal && el.modalImage && el.modalCaption) {
@@ -301,14 +320,21 @@ const {
               el.modal.classList.remove("hidden")
               el.modal.classList.add("flex")
               updateNavButtons(el.prevButton, el.nextButton)
-              if (el.closeButton && typeof el.closeButton.focus === "function") {
+              if (
+                el.closeButton &&
+                typeof el.closeButton.focus === "function"
+              ) {
                 el.closeButton.focus()
               }
               document.body.style.overflow = "hidden"
             }
             return
           }
-          if (target && target.closest && target.closest(".image-modal-close")) {
+          if (
+            target &&
+            target.closest &&
+            target.closest(".image-modal-close")
+          ) {
             e.preventDefault()
             closeModal()
             return
@@ -332,8 +358,13 @@ const {
           const el = getElements()
           if (el.modal && !el.modal.classList.contains("hidden")) {
             if (e.key === "Escape") closeModal()
-            else if (e.key === "ArrowLeft") { e.preventDefault(); showPrevImage() }
-            else if (e.key === "ArrowRight") { e.preventDefault(); showNextImage() }
+            else if (e.key === "ArrowLeft") {
+              e.preventDefault()
+              showPrevImage()
+            } else if (e.key === "ArrowRight") {
+              e.preventDefault()
+              showNextImage()
+            }
           }
         }
 

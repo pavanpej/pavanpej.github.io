@@ -212,11 +212,11 @@ const navMuted = "text-subtext-gray hover:text-white"
       setOpen(!isOpen)
     })
 
-    overlay.querySelectorAll("a").forEach((a) => {
+    overlay.querySelectorAll("a").forEach(a => {
       a.addEventListener("click", close)
     })
 
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener("keydown", e => {
       if (e.key === "Escape") close()
     })
 
