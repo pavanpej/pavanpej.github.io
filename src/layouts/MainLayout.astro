@@ -3,9 +3,11 @@ import "../styles/global.css"
 import "@fontsource/fira-sans"
 import "@fontsource/glegoo"
 import "@fortawesome/fontawesome-free/css/all.min.css"
-import "leaflet/dist/leaflet.css"
+
+import { ClientRouter } from "astro:transitions"
 
 import Header from "../components/Header.astro"
+import SiteNav from "../components/SiteNav.astro"
 
 const {
   title = "Pavan Rao",
@@ -21,6 +23,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
 
     <!-- Fonts are loaded via @fontsource imports -->
 
@@ -82,30 +85,23 @@ const {
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
     <link rel="dns-prefetch" href="//basemaps.cartocdn.com" />
 
-    <!-- Font optimization -->
+    <!-- Font fallbacks with size-adjust to reduce CLS when custom fonts load -->
     <style>
-      /* Font display optimization */
       @font-face {
-        font-family: "Fira Sans";
-        font-display: swap;
+        font-family: "Fira Sans Fallback";
+        size-adjust: 93.5%;
+        ascent-override: 88%;
+        descent-override: 22%;
+        src: local("Arial");
       }
       @font-face {
-        font-family: "Glegoo";
-        font-display: swap;
+        font-family: "Glegoo Fallback";
+        size-adjust: 97%;
+        ascent-override: 92%;
+        descent-override: 24%;
+        src: local("Georgia");
       }
     </style>
-
-    <script>
-      // Mailgo configuration
-      // @ts-ignore
-      window.mailgoConfig = {
-        showFooter: false,
-        showHeader: false,
-        dark: true,
-      }
-    </script>
-    <script src="https://unpkg.com/mailgo@0.12.2/dist/mailgo.dark.min.js"
-    ></script>
 
     <!-- Web Vitals tracking (production only) -->
     <script>
@@ -192,6 +188,7 @@ const {
     >
       {/* highlight bar */}
       <div class="bg-minion-yellow h-2.5 mb-24" id="highlight-bar"></div>
+      <SiteNav pathname={Astro.url.pathname} />
       {/* get some good horizontal margins */}
       <div class="mx-6 sm:mx-12 md:mx-32 lg:mx-64 xl:mx-96">
         <Header />
@@ -207,5 +204,142 @@ const {
         </footer>
       </div>
     </div>
+
+    <!-- ImageViewer: in layout so it runs on first load; works with ClientRouter content swaps -->
+    <script is:inline>
+      ;(function () {
+        var currentImageIndex = 0
+        var allImages = []
+
+        function getElements() {
+          return {
+            modal: document.getElementById("image-modal"),
+            modalImage: document.getElementById("modal-image"),
+            modalCaption: document.getElementById("modal-caption"),
+            closeButton: document.querySelector(".image-modal-close"),
+            prevButton: document.getElementById("prev-button"),
+            nextButton: document.getElementById("next-button"),
+          }
+        }
+
+        function updateImageList() {
+          allImages = Array.from(document.querySelectorAll(".image-viewer-trigger"))
+        }
+
+        function updateNavButtons(prevBtn, nextBtn) {
+          if (allImages.length > 1) {
+            if (prevBtn) {
+              prevBtn.classList.remove("opacity-0", "pointer-events-none")
+              prevBtn.classList.add("opacity-100", "pointer-events-auto")
+            }
+            if (nextBtn) {
+              nextBtn.classList.remove("opacity-0", "pointer-events-none")
+              nextBtn.classList.add("opacity-100", "pointer-events-auto")
+            }
+          } else {
+            if (prevBtn) {
+              prevBtn.classList.add("opacity-0", "pointer-events-none")
+              prevBtn.classList.remove("opacity-100", "pointer-events-auto")
+            }
+            if (nextBtn) {
+              nextBtn.classList.add("opacity-0", "pointer-events-none")
+              nextBtn.classList.remove("opacity-100", "pointer-events-auto")
+            }
+          }
+        }
+
+        function loadImageByIndex(index, el) {
+          if (index < 0 || index >= allImages.length || !el.modalImage || !el.modalCaption) return
+          var img = allImages[index]
+          var src = img.getAttribute("data-src")
+          var alt = img.getAttribute("data-alt")
+          if (src && alt) {
+            el.modalImage.src = src
+            el.modalImage.alt = alt
+            el.modalCaption.textContent = alt
+            currentImageIndex = index
+          }
+        }
+
+        function showPrevImage() {
+          var el = getElements()
+          var newIndex = currentImageIndex > 0 ? currentImageIndex - 1 : allImages.length - 1
+          loadImageByIndex(newIndex, el)
+        }
+
+        function showNextImage() {
+          var el = getElements()
+          var newIndex = currentImageIndex < allImages.length - 1 ? currentImageIndex + 1 : 0
+          loadImageByIndex(newIndex, el)
+        }
+
+        function closeModal() {
+          var el = getElements()
+          if (el.modal) {
+            el.modal.classList.add("hidden")
+            el.modal.classList.remove("flex")
+            document.body.style.overflow = ""
+            if (allImages[currentImageIndex] && typeof allImages[currentImageIndex].focus === "function") {
+              allImages[currentImageIndex].focus()
+            }
+          }
+        }
+
+        function handleDocumentClick(e) {
+          var target = e.target
+          var el = getElements()
+          if (target && target.classList && target.classList.contains("image-viewer-trigger")) {
+            e.preventDefault()
+            updateImageList()
+            currentImageIndex = allImages.findIndex(function (img) { return img === target })
+            var src = target.getAttribute("data-src")
+            var alt = target.getAttribute("data-alt")
+            if (src && alt && el.modal && el.modalImage && el.modalCaption) {
+              el.modalImage.src = src
+              el.modalImage.alt = alt
+              el.modalCaption.textContent = alt
+              el.modal.classList.remove("hidden")
+              el.modal.classList.add("flex")
+              updateNavButtons(el.prevButton, el.nextButton)
+              if (el.closeButton && typeof el.closeButton.focus === "function") {
+                el.closeButton.focus()
+              }
+              document.body.style.overflow = "hidden"
+            }
+            return
+          }
+          if (target && target.closest && target.closest(".image-modal-close")) {
+            e.preventDefault()
+            closeModal()
+            return
+          }
+          if (target && target.closest && target.closest("#prev-button")) {
+            e.preventDefault()
+            showPrevImage()
+            return
+          }
+          if (target && target.closest && target.closest("#next-button")) {
+            e.preventDefault()
+            showNextImage()
+            return
+          }
+          if (el.modal && target === el.modal) {
+            closeModal()
+          }
+        }
+
+        function handleKeydown(e) {
+          var el = getElements()
+          if (el.modal && !el.modal.classList.contains("hidden")) {
+            if (e.key === "Escape") closeModal()
+            else if (e.key === "ArrowLeft") { e.preventDefault(); showPrevImage() }
+            else if (e.key === "ArrowRight") { e.preventDefault(); showNextImage() }
+          }
+        }
+
+        document.addEventListener("click", handleDocumentClick, true)
+        document.addEventListener("keydown", handleKeydown)
+      })()
+    </script>
   </body>
 </html>

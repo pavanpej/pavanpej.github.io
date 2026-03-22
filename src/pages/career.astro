@@ -1,0 +1,29 @@
+---
+import MainLayout from "../layouts/MainLayout.astro"
+import Subheading from "../components/Subheading.astro"
+import Link from "../components/Link.astro"
+---
+
+<MainLayout
+  title="Career"
+  description="Career section — coming soon on Pavan Rao's personal site."
+>
+  <Subheading title="Career" backLink="/" />
+
+  <section class="my-12 max-w-md">
+    <p class="text-copyright-gray">
+      Coming soon. This route is still waiting on a successful <code
+        class="text-subtext-gray">kubectl rollout status</code
+      > of my ambition.
+    </p>
+    <p class="mt-6 text-subtext-gray text-sm">
+      Day job: SDE 2 at Infoblox — same story as the home page, just fewer
+      hyperlinks.
+    </p>
+    <p class="mt-8">
+      <Link href="/resume" underline icon="fas fa-external-link-alt">Resume</Link>
+      <span class="text-copyright-gray mx-2" aria-hidden="true">·</span>
+      <Link href="/" arrow>Home</Link>
+    </p>
+  </section>
+</MainLayout>

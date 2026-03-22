@@ -14,6 +14,9 @@ export default defineConfig({
     inlineStylesheets: 'auto'
   },
   vite: {
+    resolve: {
+      dedupe: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'],
+    },
     ssr: {
       external: ['svgo']
     },
@@ -22,10 +25,9 @@ export default defineConfig({
       rollupOptions: {
         output: {
           manualChunks: {
-            // Separate React and map libraries into their own chunks
-            'react-vendor': ['react', 'react-dom'],
+            // Avoid splitting react/react-dom—can break jsxDEV runtime. Keep map/font chunks.
             'map-vendor': ['leaflet', 'react-leaflet'],
-            'fontawesome': ['@fortawesome/fontawesome-free']
+            'fontawesome': ['@fortawesome/fontawesome-free'],
           }
         }
       },

@@ -7,6 +7,7 @@ const {
   arrow = false,
   icon = "",
   ariaLabel = "",
+  astroReload = false,
 } = Astro.props
 
 // Determine if this is an external link
@@ -44,6 +45,7 @@ const generatedAriaLabel =
   target={target}
   rel={rel}
   aria-label={generatedAriaLabel}
+  data-astro-reload={astroReload ? "" : undefined}
 >
   <slot />
   {icon && <i class={`${icon} text-sm`} aria-hidden="true" />}

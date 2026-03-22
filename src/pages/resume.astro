@@ -59,9 +59,9 @@ const resumeUrl = "/Pavan-Ramachandra-Rao-Resume.pdf"
     }
   }, 3000)
 
-  // Attempt redirect
+  // Attempt redirect (replace keeps referrer in history so back button works)
   try {
-    window.location.href = "/Pavan-Ramachandra-Rao-Resume.pdf"
+    window.location.replace("/Pavan-Ramachandra-Rao-Resume.pdf")
   } catch (error) {
     // Show fallback immediately if redirect fails
     const loading = document.getElementById("loading")
