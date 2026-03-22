@@ -152,13 +152,7 @@ export const skillsData = [
   },
   {
     category: "Web",
-    items: [
-      "HTML",
-      "CSS",
-      "Tailwind CSS",
-      "Figma",
-      "React",
-    ],
+    items: ["HTML", "CSS", "Tailwind CSS", "Figma", "React"],
   },
   {
     category: "Technologies",

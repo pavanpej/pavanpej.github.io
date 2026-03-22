@@ -9,8 +9,18 @@ import {
 } from "../data/career-data.js"
 
 const MONTHS: Record<string, number> = {
-  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
-  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11,
 }
 
 function parseDate(s: string): Date | null {
@@ -24,7 +34,7 @@ function parseDate(s: string): Date | null {
 
 function totalYOE(): string {
   const jobs = careerData.filter(
-    (i) => i.type === "job" && i.subtype === "full-time",
+    i => i.type === "job" && i.subtype === "full-time",
   )
   const intervals: { start: Date; end: Date }[] = []
   for (const j of jobs) {
@@ -47,7 +57,9 @@ function totalYOE(): string {
     totalMs += end.getTime() - start.getTime()
   }
   const years = Math.floor(totalMs / (365.25 * 24 * 60 * 60 * 1000))
-  const months = Math.round((totalMs / (24 * 60 * 60 * 1000) - years * 365.25) / 30.44)
+  const months = Math.round(
+    (totalMs / (24 * 60 * 60 * 1000) - years * 365.25) / 30.44,
+  )
   if (years === 0) return `${months} months`
   if (months === 0) return `${years} year${years !== 1 ? "s" : ""}`
   return `${years} year${years !== 1 ? "s" : ""}, ${months} months`
@@ -62,10 +74,12 @@ function totalYOE(): string {
 
   <section class="my-12 max-w-md">
     <p class="text-copyright-gray mb-8">
-      A reverse chronological timeline of all I've done career-wise since I entered college back in 2015, till today.
-      Includes my education, some selected work experience, and certifications.
-      Currently, this page is almost an exact replica of my resume, but I'm working on adding more content to it.
-      If you think I'm a good fit for your team based on what you see here, please do reach out to me.
+      A reverse chronological timeline of all I've done career-wise since I
+      entered college back in 2015, till today. Includes my education, some
+      selected work experience, and certifications. Currently, this page is
+      almost an exact replica of my resume, but I'm working on adding more
+      content to it. If you think I'm a good fit for your team based on what you
+      see here, please do reach out to me.
     </p>
 
     <Link href="/resume" underline icon="fas fa-external-link-alt">
@@ -77,16 +91,16 @@ function totalYOE(): string {
   <section class="max-w-md mt-12" aria-label="Skills">
     <h3 class="font-medium text-minion-yellow mb-4 text-xl">skills</h3>
     <div class="space-y-2">
-      {skillsData.map((group) => (
-        <div>
-          <h4 class="text-subtext-gray text-sm font-medium mb-1">
-            {group.category}
-          </h4>
-          <p class="text-white/90 text-sm">
-            {group.items.join(", ")}
-          </p>
-        </div>
-      ))}
+      {
+        skillsData.map(group => (
+          <div>
+            <h4 class="text-subtext-gray text-sm font-medium mb-1">
+              {group.category}
+            </h4>
+            <p class="text-white/90 text-sm">{group.items.join(", ")}</p>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -103,28 +117,30 @@ function totalYOE(): string {
       role="group"
       aria-label="Filter timeline entries"
     >
-      {["all", "education", "full-time", "internship", "part-time"].map(
-        (filter) => (
-          <button
-            type="button"
-            class:list={[
-              "career-filter-pill rounded px-3 py-1.5 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-minion-yellow focus:ring-offset-2 focus:ring-offset-rich-black bg-transparent border",
-              filter === "all"
-                ? "border-minion-yellow text-minion-yellow"
-                : "border-subtext-gray/50 text-subtext-gray hover:text-white hover:border-subtext-gray/70",
-            ]}
-            data-filter={filter}
-          >
-            {filter === "all"
-              ? "all"
-              : filter === "full-time"
-                ? "full-time"
-                : filter === "part-time"
-                  ? "part-time"
-                  : filter}
-          </button>
-        ),
-      )}
+      {
+        ["all", "education", "full-time", "internship", "part-time"].map(
+          filter => (
+            <button
+              type="button"
+              class:list={[
+                "career-filter-pill rounded px-3 py-1.5 text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-minion-yellow focus:ring-offset-2 focus:ring-offset-rich-black bg-transparent border",
+                filter === "all"
+                  ? "border-minion-yellow text-minion-yellow"
+                  : "border-subtext-gray/50 text-subtext-gray hover:text-white hover:border-subtext-gray/70",
+              ]}
+              data-filter={filter}
+            >
+              {filter === "all"
+                ? "all"
+                : filter === "full-time"
+                  ? "full-time"
+                  : filter === "part-time"
+                    ? "part-time"
+                    : filter}
+            </button>
+          ),
+        )
+      }
     </div>
 
     <div class="relative">
@@ -132,82 +148,88 @@ function totalYOE(): string {
       <div
         class="absolute left-4 top-0 bottom-0 w-0.5 bg-subtext-gray/50 -translate-x-1/2"
         aria-hidden="true"
-      />
+      >
+      </div>
 
       <ul class="relative space-y-0 list-none p-0 m-0">
-      {careerData.map((item) => (
-        <li
-          class="relative pl-12 pb-16 last:pb-0 career-timeline-item list-none"
-          id={item.id}
-          data-filter-type={item.type === "education" ? "education" : item.subtype}
-          aria-label={`${item.title} at ${item.organization}`}
-        >
-          <!-- Timeline marker: icon for education, dot for jobs -->
-          <div
-            class="absolute left-4 top-1.5 -translate-x-1/2 flex items-center justify-center"
-            aria-hidden="true"
-          >
-            {item.type === "education" ? (
-              <i
-                class="fas fa-graduation-cap text-minion-yellow text-sm"
+        {
+          careerData.map(item => (
+            <li
+              class="relative pl-12 pb-16 last:pb-0 career-timeline-item list-none"
+              id={item.id}
+              data-filter-type={
+                item.type === "education" ? "education" : item.subtype
+              }
+              aria-label={`${item.title} at ${item.organization}`}
+            >
+              {/* Timeline marker: icon for education, dot for jobs */}
+              <div
+                class="absolute left-4 top-1.5 -translate-x-1/2 flex items-center justify-center"
                 aria-hidden="true"
-              />
-            ) : (
-              <span
-                class:list={[
-                  "block rounded-full border-2 shrink-0",
-                  item.isCurrent
-                    ? "h-3 w-3 border-minion-yellow bg-minion-yellow ring-2 ring-vivid-blue ring-offset-2 ring-offset-rich-black"
-                    : "h-3 w-3 border-minion-yellow bg-rich-black",
-                ]}
-              />
-            )}
-          </div>
+              >
+                {item.type === "education" ? (
+                  <i
+                    class="fas fa-graduation-cap text-minion-yellow text-sm"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <span
+                    class:list={[
+                      "block rounded-full border-2 shrink-0",
+                      item.isCurrent
+                        ? "h-3 w-3 border-minion-yellow bg-minion-yellow ring-2 ring-vivid-blue ring-offset-2 ring-offset-rich-black"
+                        : "h-3 w-3 border-minion-yellow bg-rich-black",
+                    ]}
+                  />
+                )}
+              </div>
 
-          <!-- Content card -->
-          <div class="pt-0">
-            <h3 class="font-normal text-minion-yellow text-lg">
-              {item.title}
-            </h3>
-            <p class="text-subtext-gray text-sm mt-0.5">{item.organization}</p>
+              {/* Content card */}
+              <div class="pt-0">
+                <h3 class="font-normal text-minion-yellow text-lg">
+                  {item.title}
+                </h3>
+                <p class="text-subtext-gray text-sm mt-0.5">
+                  {item.organization}
+                </p>
 
-            {(item.location || item.dateStart || item.dateEnd) && (
-              <p class="text-subtext-gray text-sm mt-1">
-                {[item.location, `${item.dateStart} – ${item.dateEnd}`]
-                  .filter(Boolean)
-                  .join(" · ")}
-              </p>
-            )}
+                {(item.location || item.dateStart || item.dateEnd) && (
+                  <p class="text-subtext-gray text-sm mt-1">
+                    {[item.location, `${item.dateStart} – ${item.dateEnd}`]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
+                )}
 
-            {item.note && (
-              <p class="text-copyright-gray text-xs mt-1 italic">{item.note}</p>
-            )}
+                {item.note && (
+                  <p class="text-copyright-gray text-xs mt-1 italic">
+                    {item.note}
+                  </p>
+                )}
 
-            {item.details && (
-              <p class="text-white/90 text-sm mt-2">{item.details}</p>
-            )}
+                {item.details && (
+                  <p class="text-white/90 text-sm mt-2">{item.details}</p>
+                )}
 
-            {item.bullets && item.bullets.length > 0 && (
-              <ul class="mt-3 space-y-2 list-none pl-0 career-bullets">
-                {item.bullets.map((bullet) => (
-                  <li class="flex gap-2 text-sm items-start">
-                    <span
-                      class="text-minion-yellow shrink-0 leading-normal"
-                      aria-hidden="true"
-                    >
-                      ▪
-                    </span>
-                    <span
-                      class="text-white/90"
-                      set:html={bullet}
-                    />
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </li>
-      ))}
+                {item.bullets && item.bullets.length > 0 && (
+                  <ul class="mt-3 space-y-2 list-none pl-0 career-bullets">
+                    {item.bullets.map(bullet => (
+                      <li class="flex gap-2 text-sm items-start">
+                        <span
+                          class="text-minion-yellow shrink-0 leading-normal"
+                          aria-hidden="true"
+                        >
+                          ▪
+                        </span>
+                        <span class="text-white/90" set:html={bullet} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </section>
@@ -218,21 +240,23 @@ function totalYOE(): string {
       certifications I've earned
     </h3>
     <ul class="space-y-4 list-none p-0 m-0">
-      {certificationsData.map((cert) => (
-        <li class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-          <span class="font-semibold text-white">{cert.title}</span>
-          <span class="text-copyright-gray">·</span>
-          <span class="text-subtext-gray text-sm">{cert.organization}</span>
-          <span class="text-subtext-gray text-sm">
-            ({cert.dateStart} – {cert.dateEnd})
-          </span>
-          {cert.credentialId && (
-            <span class="text-copyright-gray text-xs w-full mt-1">
-              Credential ID: {cert.credentialId}
+      {
+        certificationsData.map(cert => (
+          <li class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+            <span class="font-semibold text-white">{cert.title}</span>
+            <span class="text-copyright-gray">·</span>
+            <span class="text-subtext-gray text-sm">{cert.organization}</span>
+            <span class="text-subtext-gray text-sm">
+              ({cert.dateStart} – {cert.dateEnd})
             </span>
-          )}
-        </li>
-      ))}
+            {cert.credentialId && (
+              <span class="text-copyright-gray text-xs w-full mt-1">
+                Credential ID: {cert.credentialId}
+              </span>
+            )}
+          </li>
+        ))
+      }
     </ul>
   </section>
 
@@ -257,26 +281,22 @@ function totalYOE(): string {
     const items = document.querySelectorAll(".career-timeline-item")
     if (!pills.length || !items.length) return
 
-    pills.forEach((pill) => {
+    pills.forEach(pill => {
       pill.addEventListener("click", () => {
         const filter = pill.getAttribute("data-filter")
-        pills.forEach((p) => {
+        pills.forEach(p => {
           const f = p.getAttribute("data-filter")
           if (f === filter) {
-            p.classList.remove(
-              "border-subtext-gray/50",
-              "text-subtext-gray",
-            )
+            p.classList.remove("border-subtext-gray/50", "text-subtext-gray")
             p.classList.add("border-minion-yellow", "text-minion-yellow")
           } else {
             p.classList.remove("border-minion-yellow", "text-minion-yellow")
             p.classList.add("border-subtext-gray/50", "text-subtext-gray")
           }
         })
-        items.forEach((item) => {
+        items.forEach(item => {
           const type = item.getAttribute("data-filter-type")
-          const show =
-            filter === "all" || type === filter
+          const show = filter === "all" || type === filter
           item.classList.toggle("hidden", !show)
         })
       })
