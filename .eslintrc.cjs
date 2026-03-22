@@ -1,6 +1,6 @@
 module.exports = {
-  // Base configuration
-  extends: ['eslint:recommended'],
+  // Base configuration (prettier last to override formatting rules)
+  extends: ['eslint:recommended', 'prettier'],
   plugins: ['astro', 'react', 'react-hooks'],
   
   // Files to ignore

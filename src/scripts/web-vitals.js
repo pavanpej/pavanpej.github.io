@@ -1,3 +1,4 @@
+/* eslint-disable no-console -- Console used only in DEV for debugging */
 /**
  * Web Vitals tracking (production only).
  */
