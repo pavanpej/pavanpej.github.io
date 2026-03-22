@@ -207,9 +207,9 @@ const {
 
     <!-- ImageViewer: in layout so it runs on first load; works with ClientRouter content swaps -->
     <script is:inline>
-      ;(function () {
-        var currentImageIndex = 0
-        var allImages = []
+      (function () {
+        let currentImageIndex = 0
+        let allImages = []
 
         function getElements() {
           return {
@@ -250,9 +250,9 @@ const {
 
         function loadImageByIndex(index, el) {
           if (index < 0 || index >= allImages.length || !el.modalImage || !el.modalCaption) return
-          var img = allImages[index]
-          var src = img.getAttribute("data-src")
-          var alt = img.getAttribute("data-alt")
+          const img = allImages[index]
+          const src = img.getAttribute("data-src")
+          const alt = img.getAttribute("data-alt")
           if (src && alt) {
             el.modalImage.src = src
             el.modalImage.alt = alt
@@ -262,19 +262,19 @@ const {
         }
 
         function showPrevImage() {
-          var el = getElements()
-          var newIndex = currentImageIndex > 0 ? currentImageIndex - 1 : allImages.length - 1
+          const el = getElements()
+          const newIndex = currentImageIndex > 0 ? currentImageIndex - 1 : allImages.length - 1
           loadImageByIndex(newIndex, el)
         }
 
         function showNextImage() {
-          var el = getElements()
-          var newIndex = currentImageIndex < allImages.length - 1 ? currentImageIndex + 1 : 0
+          const el = getElements()
+          const newIndex = currentImageIndex < allImages.length - 1 ? currentImageIndex + 1 : 0
           loadImageByIndex(newIndex, el)
         }
 
         function closeModal() {
-          var el = getElements()
+          const el = getElements()
           if (el.modal) {
             el.modal.classList.add("hidden")
             el.modal.classList.remove("flex")
@@ -286,14 +286,14 @@ const {
         }
 
         function handleDocumentClick(e) {
-          var target = e.target
-          var el = getElements()
+          const {target} = e
+          const el = getElements()
           if (target && target.classList && target.classList.contains("image-viewer-trigger")) {
             e.preventDefault()
             updateImageList()
-            currentImageIndex = allImages.findIndex(function (img) { return img === target })
-            var src = target.getAttribute("data-src")
-            var alt = target.getAttribute("data-alt")
+            currentImageIndex = allImages.findIndex((img) => { return img === target })
+            const src = target.getAttribute("data-src")
+            const alt = target.getAttribute("data-alt")
             if (src && alt && el.modal && el.modalImage && el.modalCaption) {
               el.modalImage.src = src
               el.modalImage.alt = alt
@@ -329,7 +329,7 @@ const {
         }
 
         function handleKeydown(e) {
-          var el = getElements()
+          const el = getElements()
           if (el.modal && !el.modal.classList.contains("hidden")) {
             if (e.key === "Escape") closeModal()
             else if (e.key === "ArrowLeft") { e.preventDefault(); showPrevImage() }

@@ -190,7 +190,7 @@ const navMuted = "text-subtext-gray hover:text-white"
       toggle.setAttribute("aria-expanded", open ? "true" : "false")
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu")
       toggle.style.zIndex = open ? "70" : ""
-      var icon = toggle.querySelector("i")
+      const icon = toggle.querySelector("i")
       if (icon) {
         if (open) {
           icon.classList.remove("fa-bars", "text-lg")
@@ -207,20 +207,20 @@ const navMuted = "text-subtext-gray hover:text-white"
       setOpen(false)
     }
 
-    toggle.addEventListener("click", function () {
-      var isOpen = toggle.getAttribute("aria-expanded") === "true"
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true"
       setOpen(!isOpen)
     })
 
-    overlay.querySelectorAll("a").forEach(function (a) {
+    overlay.querySelectorAll("a").forEach((a) => {
       a.addEventListener("click", close)
     })
 
-    document.addEventListener("keydown", function (e) {
+    document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") close()
     })
 
-    mq.addEventListener("change", function () {
+    mq.addEventListener("change", () => {
       if (mq.matches) close()
     })
   }
