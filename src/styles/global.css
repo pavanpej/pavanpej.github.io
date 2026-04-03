@@ -3,6 +3,7 @@
 @import './map.css';
 @import './image-viewer.css';
 
+@config '../../tailwind.config.mjs';
 @import 'tailwindcss';
 
 /*
