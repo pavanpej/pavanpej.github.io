@@ -3,9 +3,7 @@
 @import './map.css';
 @import './image-viewer.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 /*
 Custom Colours
