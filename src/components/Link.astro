@@ -31,7 +31,7 @@ const combinedStyles = `${baseStyles} ${linkStyles} ${className}`
 const target = isExternal ? "_blank" : undefined
 const rel = isExternal ? "noopener noreferrer" : undefined
 
-// Generate aria-label for external links
+// Generate aria-label for external links (strip HTML tags from slot content)
 const slotContent = isExternal
   ? (await Astro.slots.render("default")).replace(/<[^>]*>/g, "").trim()
   : ""
