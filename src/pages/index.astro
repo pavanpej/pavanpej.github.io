@@ -8,7 +8,7 @@ import Link from "../components/Link.astro"
   <section class="my-12" id="greeting" aria-label="greeting section">
     <h2 class="text-minion-yellow text-3xl font-bold mb-2">
       Hi, I'm Pavan Rao.{" "}
-      <span role="img" aria-label="jsx-a11y/accessible-emoji"> 👋 </span>
+      <span aria-hidden="true"> 👋 </span>
     </h2>
   </section>
   <section class="my-12" id="whoami" aria-label="whoami section">
@@ -70,33 +70,37 @@ import Link from "../components/Link.astro"
       or find me on <br />
       GitHub, X (formerly Twitter), or LinkedIn
     </p>
-    <div class="flex space-x-4 mt-8" aria-label="social links">
-      <span aria-label="email">
+    <div class="flex space-x-4 mt-8" role="group" aria-label="social links">
+      <span>
         <SocialLink
           href="mailto:pavanpej@gmail.com"
           faIcon="fa-solid fa-envelope text-xl"
           class="text-white"
+          aria-label="Email"
         />
       </span>
-      <span aria-label="GitHub">
+      <span>
         <SocialLink
           href="https://github.com/pavanpej"
           faIcon="fa-brands fa-github text-xl"
           class="text-white"
+          aria-label="GitHub"
         />
       </span>
-      <span aria-label="X">
+      <span>
         <SocialLink
           href="https://x.com/pavanpej"
           faIcon="fa-brands fa-square-x-twitter text-xl"
           class="text-white"
+          aria-label="X (formerly Twitter)"
         />
       </span>
-      <span aria-label="LinkedIn">
+      <span>
         <SocialLink
           href="https://linkedin.com/in/pavanrrao"
           faIcon="fa-brands fa-linkedin text-xl"
           class="text-white"
+          aria-label="LinkedIn"
         />
       </span>
     </div>

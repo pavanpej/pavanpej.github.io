@@ -83,11 +83,9 @@ const nationalParks = countNationalParks(visitedPlaces)
       <div
         class="bg-rich-black border border-vivid-blue rounded-lg p-4 text-center"
         role="listitem"
+        aria-label={`${visitedPlaces.length} places visited`}
       >
-        <span
-          class="text-2xl font-bold text-minion-yellow"
-          aria-label="Number of places visited"
-        >
+        <span class="text-2xl font-bold text-minion-yellow">
           {visitedPlaces.length}
         </span>
         <span class="text-sm text-gray-400">places visited</span>
@@ -95,11 +93,9 @@ const nationalParks = countNationalParks(visitedPlaces)
       <div
         class="bg-rich-black border border-vivid-blue rounded-lg p-4 text-center"
         role="listitem"
+        aria-label={`${visitedStates.length} states`}
       >
-        <span
-          class="text-2xl font-bold text-minion-yellow"
-          aria-label="Number of states visited"
-        >
+        <span class="text-2xl font-bold text-minion-yellow">
           {visitedStates.length}
         </span>
         <span class="text-sm text-gray-400">states</span>
@@ -107,11 +103,9 @@ const nationalParks = countNationalParks(visitedPlaces)
       <div
         class="bg-rich-black border border-vivid-blue rounded-lg p-4 text-center"
         role="listitem"
+        aria-label={`${nationalParks} national parks`}
       >
-        <span
-          class="text-2xl font-bold text-minion-yellow"
-          aria-label="Number of national parks visited"
-        >
+        <span class="text-2xl font-bold text-minion-yellow">
           {nationalParks}
         </span>
         <span class="text-sm text-gray-400">national parks</span>
@@ -119,11 +113,9 @@ const nationalParks = countNationalParks(visitedPlaces)
       <div
         class="bg-rich-black border border-vivid-blue rounded-lg p-4 text-center"
         role="listitem"
+        aria-label={`${allYears.length} years`}
       >
-        <span
-          class="text-2xl font-bold text-minion-yellow"
-          aria-label="Number of years traveled"
-        >
+        <span class="text-2xl font-bold text-minion-yellow">
           {allYears.length}
         </span>
         <span class="text-sm text-gray-400">years</span>
