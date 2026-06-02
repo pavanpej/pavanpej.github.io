@@ -44,7 +44,6 @@
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.1",
-    "@astrojs/tailwind": "^6.0.2",
     "@fontsource/fira-sans": "^5.0.0",
     "@fontsource/glegoo": "^5.0.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
@@ -53,12 +52,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
-    "tailwindcss": "^3.3.0",
+    "tailwindcss": "~4.1.11",
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@tailwindcss/vite": "^4.1.11",
+    "@tailwindcss/vite": "~4.1.11",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.36.0",
     "astro-eslint-parser": "^1.2.2",
