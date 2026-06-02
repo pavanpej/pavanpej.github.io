@@ -18,3 +18,27 @@ updates:
     commit-message:
       prefix: "deps"
       include: "scope"
+    # Group minor and patch updates into a single PR to reduce noise and
+    # keep transitive dependencies current (which is where most audit
+    # vulnerabilities originate).
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Keep GitHub Actions used by the workflows (including the security audit)
+  # up to date so they continue to receive security fixes.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Los_Angeles"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "pavanpej"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
