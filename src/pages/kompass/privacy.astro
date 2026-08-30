@@ -1,0 +1,107 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro"
+import Subheading from "../../components/Subheading.astro"
+
+const lastUpdated = "August 2026"
+---
+
+<MainLayout
+  title="Kompass Privacy Policy"
+  description="Privacy policy for Kompass, an Android compass and level app."
+>
+  <Subheading title="Kompass Privacy Policy" backLink="/" />
+
+  <section class="my-12">
+    <p class="max-w-2xl text-lg">
+      Kompass is a compass and level app for Android. This page explains what
+      data the app accesses and how it's used.
+    </p>
+    <p class="max-w-2xl text-sm mt-4 font-light">
+      Last updated: {lastUpdated}
+    </p>
+  </section>
+
+  <section class="my-12 max-w-2xl">
+    <h3 class="font-medium text-xl text-minion-yellow mb-2">
+      The short version
+    </h3>
+    <p class="mb-4">
+      Kompass does not have a server. It never sends any data anywhere. There
+      are no accounts, no analytics, no advertising, and no third-party SDKs.
+      Everything the app reads from your device is used only to draw the
+      compass, level, and related readouts on your own screen, and stays on
+      your device.
+    </p>
+  </section>
+
+  <section class="my-12 max-w-2xl">
+    <h3 class="font-medium text-xl text-minion-yellow mb-2">
+      Information the app accesses
+    </h3>
+    <ul class="leading-8 list-disc list-inside">
+      <li>
+        <strong>Location</strong> (coarse location, with your permission) — used
+        to show your latitude/longitude on screen, to correct the compass for
+        true north instead of magnetic north, and to estimate the sun and
+        moon's position in the sky. Location is requested only when you use a
+        feature that needs it, and is processed entirely on your device.
+      </li>
+      <li>
+        <strong>Motion and environment sensors</strong> (compass/magnetometer,
+        accelerometer, barometer) — used to draw the compass heading, the
+        bubble level, and the magnetic-field and altitude readouts. This data
+        never leaves your device.
+      </li>
+      <li>
+        <strong>Your in-app settings</strong> (e.g. haptic feedback on/off,
+        default north mode, coordinate display format) — stored locally on
+        your device so they persist between app launches. Never transmitted
+        anywhere.
+      </li>
+    </ul>
+  </section>
+
+  <section class="my-12 max-w-2xl">
+    <h3 class="font-medium text-xl text-minion-yellow mb-2">
+      What Kompass does not do
+    </h3>
+    <ul class="leading-8 list-disc list-inside">
+      <li>It does not collect, transmit, sell, or share any data with anyone, including the developer.</li>
+      <li>It does not have user accounts or sign-in.</li>
+      <li>It does not use analytics, crash reporting, or advertising SDKs.</li>
+      <li>It does not use cookies (it's not a web app).</li>
+    </ul>
+  </section>
+
+  <section class="my-12 max-w-2xl">
+    <h3 class="font-medium text-xl text-minion-yellow mb-2">
+      Children's privacy
+    </h3>
+    <p>
+      Kompass is not directed at children and does not knowingly collect any
+      information from children. Since the app has no network access of any
+      kind, no information is collected from anyone, of any age.
+    </p>
+  </section>
+
+  <section class="my-12 max-w-2xl">
+    <h3 class="font-medium text-xl text-minion-yellow mb-2">
+      Changes to this policy
+    </h3>
+    <p>
+      If this policy ever changes, the update will be posted on this page
+      with a revised "last updated" date above.
+    </p>
+  </section>
+
+  <section class="my-12 max-w-2xl">
+    <h3 class="font-medium text-xl text-minion-yellow mb-2">Contact</h3>
+    <p>
+      Questions about this policy or the app can be sent to <a
+        href="mailto:pavanpej@gmail.com"
+        class="text-vivid-blue hover:text-minion-yellow transition-all"
+        >pavanpej@gmail.com</a
+      >.
+    </p>
+  </section>
+</MainLayout>
