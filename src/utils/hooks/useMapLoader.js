@@ -12,9 +12,8 @@ export const useMapLoader = () => {
     const loadMapComponents = async () => {
       try {
         const L = await import("leaflet")
-        const { MapContainer, TileLayer, Marker, Popup } = await import(
-          "react-leaflet"
-        )
+        const { MapContainer, TileLayer, Marker, Popup } =
+          await import("react-leaflet")
 
         // Fix for default markers in react-leaflet
         delete L.default.Icon.Default.prototype._getIconUrl
