@@ -1,14 +1,15 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://pavanpej.com',
-  integrations: [tailwind(), react(), sitemap()],
+  integrations: [react(), sitemap()],
   output: 'static',
+  // Preserve whitespace between adjacent inline elements as in Astro 5.
+  compressHTML: true,
   build: {
     assets: 'assets',
     inlineStylesheets: 'auto'
@@ -24,10 +25,15 @@ export default defineConfig({
       // Optimize chunk size
       rollupOptions: {
         output: {
-          manualChunks: {
+          manualChunks(id) {
             // Avoid splitting react/react-dom—can break jsxDEV runtime. Keep map/font chunks.
-            'map-vendor': ['leaflet', 'react-leaflet'],
-            'fontawesome': ['@fortawesome/fontawesome-free'],
+            const path = id.replaceAll('\\', '/');
+            if (/\/node_modules\/(?:leaflet|react-leaflet|@react-leaflet)\//.test(path)) {
+              return 'map-vendor';
+            }
+            if (path.includes('/node_modules/@fortawesome/fontawesome-free/')) {
+              return 'fontawesome';
+            }
           }
         }
       },
