@@ -55,7 +55,14 @@ jobs:
         run: npm run check
 
       - name: Build with Astro
-        run: npm run build
+        env:
+          PUBLIC_CARTO_API_KEY: ${{ secrets.PUBLIC_CARTO_API_KEY }}
+        run: |
+          if [ -z "${PUBLIC_CARTO_API_KEY//[[:space:]]/}" ]; then
+            echo "::error::Add the PUBLIC_CARTO_API_KEY repository secret before deploying."
+            exit 1
+          fi
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

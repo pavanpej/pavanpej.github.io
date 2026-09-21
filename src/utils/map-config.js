@@ -1,3 +1,6 @@
+// Public browser key: restrict allowed referrers in CARTO.
+const cartoApiKey = import.meta.env.PUBLIC_CARTO_API_KEY?.trim() || ""
+
 // Map configuration for USA travel map
 export const MAP_CONFIG = {
   // Center of USA
@@ -18,9 +21,9 @@ export const MAP_CONFIG = {
 
   // Tile layer configuration
   tileLayer: {
-    url: "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+    url: `https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png?key=${encodeURIComponent(cartoApiKey)}`,
     attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
   },
 
   // Marker configuration

@@ -59,6 +59,38 @@ Open [http://localhost:4321](http://localhost:4321) in your browser.
 
 Automatically deployed to GitHub Pages via GitHub Actions on every push to the `main` branch. The deploy workflow runs ESLint, Prettier, and `astro check` before building.
 
+### USA map: CARTO API key
+
+The USA map uses CARTO tiles and requires a browser API key. Keep the existing
+map style by configuring the key as follows:
+
+1. Create a key at [CARTO](https://carto.com/basemaps/apikey/) and restrict its
+   allowed referrers to `pavanpej.com` and `*.pavanpej.com`.
+2. In the GitHub repository, open **Settings → Secrets and variables → Actions**.
+   Under **Repository secrets**, select **New repository secret**, name it
+   `PUBLIC_CARTO_API_KEY`, and enter the key as its value. Use a repository secret,
+   not an environment secret: the build job does not use the `github-pages`
+   environment.
+3. Push the configuration changes to `main` to deploy, or run **Actions → Deploy
+   to GitHub Pages → Run workflow** after the changes are on `main`. Deployment
+   stops with an error if the key is missing or blank.
+4. Hard-refresh the USA map after deployment. In browser developer tools, check
+   that requests to `basemaps.cartocdn.com` include a `key` query parameter and
+   that the map no longer displays the watermark.
+
+For local development, create an ignored `.env.local` file in the project root
+and set `PUBLIC_CARTO_API_KEY` to your key. Restart `npm run dev` after changing
+it. To view authenticated tiles locally, use a separate development key with
+the appropriate localhost referrer allowed in CARTO; production restrictions
+do not cover localhost or unrelated preview domains.
+
+Astro embeds `PUBLIC_` variables in the browser bundle at build time. The key
+will be visible to visitors even though it is stored as a GitHub secret; CARTO
+referrer restrictions are the protection against unauthorized use. Never
+commit the real key. Rebuild and deploy after changing or rotating it.
+Local and pull-request builds can run without a key, but their maps will show
+CARTO's watermark until a valid key is supplied.
+
 ## SEO
 
 - **`public/robots.txt`** — allows crawlers and points to the sitemap.
