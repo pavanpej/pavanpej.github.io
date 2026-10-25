@@ -96,6 +96,45 @@ CARTO's watermark until a valid key is supplied.
 - **`public/robots.txt`** — allows crawlers and points to the sitemap.
 - **`@astrojs/sitemap`** — emits `sitemap-index.xml` and `sitemap-0.xml` in the build output.
 
+### Agent discovery response header
+
+`public/site.json` provides a machine-readable description of the website and
+links to its main pages. Keep it in sync when adding or removing main pages.
+
+GitHub Pages serves static files and does not apply custom response headers
+from a `_headers` file or Astro middleware. Add the homepage header at Cloudflare
+after deploying `site.json`:
+
+1. Select the `pavanpej.com` zone in Cloudflare and open **Rules → Overview**.
+2. Create a **Response Header Transform Rule** named `Homepage agent discovery`.
+3. Use this custom filter expression:
+
+   ```text
+   (http.host eq "pavanpej.com" and http.request.uri.path eq "/")
+   ```
+
+4. Choose **Add static**, with header name `Link` and this value:
+
+   ```text
+   </site.json>; rel="describedby"; type="application/json"
+   ```
+
+5. Deploy the rule. Use **Add**, rather than **Set**, to preserve other Link
+   header values. The hostname must be proxied through Cloudflare for the rule
+   to run.
+
+`describedby` is a registered link relation for a resource describing the current
+page. This personal website does not publish an API catalog or API documentation.
+
+Verify that `https://pavanpej.com/site.json` returns the JSON document, and that
+`curl -I https://pavanpej.com/` includes the Link header. Then run the
+[Cloudflare readiness scanner](https://isitagentready.com/) and confirm
+`checks.discoverability.linkHeaders.status` is `pass`.
+
+References: [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288),
+[IANA link relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml),
+and [Cloudflare response header rules](https://developers.cloudflare.com/rules/transform/response-header-modification/create-dashboard/).
+
 ---
 
 Built with ❤️ by [Pavan Rao](https://pavanpej.com)

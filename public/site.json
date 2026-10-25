@@ -1,0 +1,35 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Pavan Rao - Personal Website",
+  "url": "https://pavanpej.com/",
+  "description": "Pavan Rao's personal website, with his software engineering career, resume, travel experiences, and music.",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Pavan Rao",
+    "url": "https://pavanpej.com/"
+  },
+  "hasPart": [
+    {
+      "@type": "WebPage",
+      "name": "Career",
+      "url": "https://pavanpej.com/career"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Resume",
+      "url": "https://pavanpej.com/resume"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Experiences",
+      "url": "https://pavanpej.com/experiences"
+    },
+    {
+      "@type": "WebPage",
+      "name": "Music",
+      "url": "https://pavanpej.com/music"
+    }
+  ]
+}
