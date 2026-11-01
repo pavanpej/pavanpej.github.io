@@ -4,6 +4,9 @@
   "description": "The personal website of Pavan Rao",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "author": "Pavan Rao",
   "license": "MIT",
   "homepage": "https://pavanpej.com",
@@ -42,13 +45,12 @@
     "analyze": "npm run build && npx vite-bundle-analyzer dist/assets"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
+    "@astrojs/react": "^6.0.6",
     "@astrojs/sitemap": "^3.7.1",
-    "@astrojs/tailwind": "^6.0.2",
     "@fontsource/fira-sans": "^5.0.0",
     "@fontsource/glegoo": "^5.0.0",
     "@fortawesome/fontawesome-free": "^6.7.2",
-    "astro": "^5.18.1",
+    "astro": "^7.3.3",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -58,10 +60,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "@tailwindcss/vite": "^4.1.11",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.36.0",
     "astro-eslint-parser": "^1.2.2",
+    "autoprefixer": "^10.4.27",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^0.34.0",
@@ -73,9 +77,6 @@
     "prettier-plugin-astro": "^0.14.1",
     "terser": "^5.43.1",
     "vite-bundle-analyzer": "^0.7.0"
-  },
-  "overrides": {
-    "volar-service-yaml": "0.0.70"
   },
   "lint-staged": {
     "*.{js,jsx,astro}": [
